@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<style>
+
+  body {
+    font: 10px sans-serif;
+  }
+
+  .axis path,
+  .axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+  }
+
+  .dot {
+    stroke: #000;
+  }
+
+  #click1 {
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer; cursor: hand;
+  }
+
+  .bar {
+    fill: orange;
+  }
+
+  .bar:hover {
+    fill: orangered ;
+  }
+
+  .x.axis.bar path {
+    display: none;
+  }
+
+  .d3-tip {
+    line-height: 1;
+    font-weight: bold;
+    padding: 12px;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    border-radius: 2px;
+  }
+
+  /* Creates a small triangle extender for the tooltip */
+  .d3-tip:after {
+    box-sizing: border-box;
+    display: inline;
+    font-size: 10px;
+    width: 100%;
+    line-height: 1;
+    color: rgba(0, 0, 0, 0.8);
+    content: "\25BC";
+    position: absolute;
+    text-align: center;
+  }
+
+  /* Style northward tooltips differently */
+  .d3-tip.n:after {
+    margin: -1px 0 0 0;
+    top: 100%;
+    left: 0;
+  }
+</style>
+
+<body>
+
+  <script src="//d3js.org/d3.v3.min.js"></script>
+  <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+
+  <h1>Crime in San Francisco</h1>
+  <h2>Crime in 2003 vs. 2015</h2>
+  <p>Each point on the graph corresponds to a district.
+  The radius of a point should be proportional to total number of crimes in
+  that district.</p>
+
+  <p id="click1">Click here to change from 2003 to 2015 data.</p>
+
+
+  <script>
+
+    var margin = {top: 40, right: 40, bottom: 30, left: 40},
+        width = 760 - margin.left - margin.right,
+        height = 400 - margin.top - margin.bottom;
+
+    var x1 = d3.scale.linear()
+        .range([0, width]);
+
+    var y1 = d3.scale.linear()
+        .range([height, 0]);
+
+    // to dynamically assign colors
+    var color = d3.scale.category10();
+
+    var xAxis1 = d3.svg.axis()
+        .scale(x1)
+        .orient("bottom");
+
+    var yAxis1 = d3.svg.axis()
+        .scale(y1)
+        .orient("left");
+
+    var svg1 = d3.select("body").append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+      .append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+
+    d3.csv("crime_2003.csv", function(error1, data1) {
+
+      d3.csv("crime_2015.csv", function(error2, data2) {
+
+        if (error1 || error2) {         //If error is not null, something went wrong.
+          console.log(error1, error2);  //Log the error.
+        }
+        else {                          //If no error, the file loaded correctly. Yay!
+          console.log(data1, data2);    //Log the data.
+
+          dataset_03 = data1;
+          dataset_15 = data2;
+        }
+
+        // to hold all vehicle theft and Prostitution
+        var ALL_VT = [];
+        var ALL_PR = [];
+
+        // populate ALL_VT and ALL_PR
+        for (i=0; i < dataset_03.length; i++) {
+
+          var [i_03_VT, i_03_PR] = [Number(dataset_03[i].VT), Number(dataset_03[i].PR)];
+          var [i_15_VT, i_15_PR] = [Number(dataset_15[i].VT), Number(dataset_15[i].PR)];
+
+          ALL_VT.push(i_03_VT, i_15_VT);
+          ALL_PR.push(i_03_PR, i_15_PR);
+
+          dataset_03[i].VT = i_03_VT
+          dataset_03[i].PR = i_03_PR
+          dataset_15[i].VT = i_15_VT
+          dataset_15[i].PR = i_15_PR
+
+        };
+
+      var ROOT_CF = String(Math.max.apply(Math, ALL_VT.concat(ALL_PR))).length - 1;
+
+      // Returns the minimum and maximum value in the given array using natural order.
+      x1.domain([0, d3.extent(ALL_PR, function(d) { return d; })[1]]);
+      y1.domain([0, d3.extent(ALL_VT, function(d) { return d; })[1]]);
+
+      //x1.domain(d3.extent(ALL_PR, function(d) { return d; }));
+      //y1.domain(d3.extent(ALL_VT, function(d) { return d; }));
+
+      console.log(d3.extent(ALL_VT, function(d) { return d; })[1])
+      // add x axis
+      svg1.append("g")
+          .attr("class", "x axis")
+          .attr("transform", "translate(0," + height + ")")
+          .call(xAxis1)
+        .append("text")
+          .attr("class", "label")
+          .attr("x", width)
+          .attr("y", -6)
+          .style("text-anchor", "end")
+          .text("Prostitution");
+
+      // add y axis
+      svg1.append("g")
+          .attr("class", "y axis")
+          .call(yAxis1)
+        .append("text")
+          .attr("class", "label")
+          .attr("transform", "rotate(-90)")
+          .attr("y", 6)
+          .attr("dy", ".71em")
+          .style("text-anchor", "end")
+          .text("Vehicle Theft")
+
+
+      // add dots
+      svg1.append("g")
+          .selectAll(".dot")
+          .data(dataset_03)
+          .enter().append("circle")
+          .attr("class", "dot")
+          // scaling as a function of how big the largest number is
+          .attr("r", function(d) {return Math.pow(d.VT + d.PR, 1/ROOT_CF); })
+          .attr("cx", function(d) { return x1(d.PR); })
+          .attr("cy", function(d) { return y1(d.VT); })
+          .style("fill", "red");
+
+      // add text to dots
+      svg1.append("g")
+         .selectAll("text")
+         .data(dataset_03)
+         .enter()
+         .append("text")
+         .attr("class", "district")
+         .text(function(d) { return d.DST; })
+         .attr("x", function(d) { return x1(d.PR); })
+         .attr("y", function(d) { return y1(d.VT); })
+         .attr("font-family", "sans-serif")
+         .attr("font-size", "8px");
+
+      // add legend
+      var legend = svg1.selectAll(".legend")
+          .data([1])
+          .enter().append("g")
+          .attr("class", "legend")
+          .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
+
+      legend.append("rect")
+          .attr("x", width - 18)
+          .attr("width", 18)
+          .attr("height", 18)
+          .style("fill", "red");
+
+      legend.append("text")
+          .attr("x", width - 24)
+          .attr("y", 9)
+          .attr("dy", ".35em")
+          .attr("font-size", "14px")
+          .style("text-anchor", "end")
+          .text('2003');
+
+          // to toggle between datasets
+          var toggle_list = [{"DATA": dataset_15, "CLR": 'green', "YR": '2015'},
+                            {"DATA": dataset_03, "CLR": 'red', "YR": '2003'}]
+
+          // ## For interactivity ##
+          d3.select("#click1")
+            .on("click", function() {
+
+              // init current vars
+              curr_dataset = toggle_list[0].DATA;
+              curr_color = toggle_list[0].CLR;
+              curr_text = toggle_list[0].YR;
+
+              // change dataset order
+              toggle_list.push(toggle_list.shift());
+
+              // update all circles
+              svg1.selectAll(".dot")
+                 .data(curr_dataset)
+                 .transition()
+                 .duration(1000)
+                 .attr("r", function(d) {return Math.pow(d.VT + d.PR, 1/ROOT_CF); })
+                 .attr("cx", function(d) { return x1(d.PR); })
+                 .attr("cy", function(d) { return y1(d.VT); })
+                 .style("fill", curr_color);
+
+               // update all text
+               svg1.selectAll(".district")
+                  .data(curr_dataset)
+                  .transition()
+                  .duration(1000)
+                  .attr("x", function(d) { return x1(d.PR); })
+                  .attr("y", function(d) { return y1(d.VT); })
+                  .attr("font-family", "sans-serif")
+                  .attr("font-size", "8px");
+
+            // update both legend text and rectangle
+            svg1.selectAll(".legend")
+              .transition()
+              .duration(1000)
+              .selectAll("rect")
+                .style("fill", curr_color);
+
+            svg1.selectAll(".legend")
+              .transition()
+              .duration(1000)
+              .selectAll("text")
+                .text(curr_text);
+
+            });
+
+      })
+  });
+  </script>
+
+
+
+  <h2>Vehicle theft by year</h2>
+  <p>Each point on the graph corresponds to a district.
+  The radius of a point should be proportional to total number of crimes in
+  that district.</p>
+
+  <script>
+
+    var margin2 = {top: 40, right: 20, bottom: 30, left: 40},
+        width2 = 960 - margin.left - margin.right,
+        height2 = 500 - margin.top - margin.bottom;
+
+    var formatPercent = d3.format(".0%");
+
+    var x2 = d3.scale.ordinal()
+        .rangeRoundBands([0, width2], .1);
+
+    var y2 = d3.scale.linear()
+        .range([height2, 0]);
+
+    var xAxis2 = d3.svg.axis()
+        .scale(x2)
+        .orient("bottom");
+
+    var yAxis2 = d3.svg.axis()
+        .scale(y2)
+        .orient("left")
+        //.tickFormat(formatPercent);
+
+    var tip = d3.tip()
+      .attr('class', 'd3-tip')
+      .offset([-10, 0])
+      .html(function(d) {
+        return "<strong>Count:</strong> <span style='color:red'>" + d.Count + "</span>";
+      })
+
+    var svg2 = d3.select("body").append("svg")
+        .attr("width", width2 + margin.left + margin.right)
+        .attr("height", height2 + margin.top + margin.bottom)
+      .append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+    svg2.call(tip);
+
+    d3.csv("VT_count.csv", type, function(error, data) {
+      x2.domain(data.map(function(d) { return d.Year; }));
+      y2.domain([0, d3.max(data, function(d) { return d.Count; })]);
+
+    console.log(data);
+
+      svg2.append("g")
+          .attr("class", "x axis")
+          .attr("transform", "translate(0," + height2 + ")")
+          .call(xAxis2);
+
+      svg2.append("g")
+          .attr("class", "y axis")
+          .call(yAxis2)
+        .append("text")
+          .attr("transform", "rotate(-90)")
+          .attr("y", 6)
+          .attr("dy", ".71em")
+          .style("text-anchor", "end")
+          .text("Frequency");
+
+      svg2.selectAll(".bar")
+          .data(data)
+          .enter().append("rect")
+          .attr("class", "bar")
+          .attr("x", function(d) { return x2(d.Year); })
+          .attr("width", x2.rangeBand())
+          .attr("y", function(d) { return y2(d.Count); })
+          .attr("height", function(d) { return height2 - y2(d.Count); })
+          .on('mouseover', tip.show)
+          .on('mouseout', tip.hide)
+
+    });
+
+    function type(d) {
+      d.Count = +d.Count;
+      return d;
+    };
+
+    </script>
+
+</body>
