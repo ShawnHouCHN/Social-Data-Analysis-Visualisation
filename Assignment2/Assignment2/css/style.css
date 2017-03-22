@@ -20,7 +20,7 @@
   pointer-events: none;
 }
 
-.year-nav {
+.tab-key {
   position: absolute;
   bottom: 0;
   transform: translateY(50%);
