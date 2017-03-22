@@ -10,7 +10,6 @@ var margin = {top: 20, right: 20, bottom: 30, left: 40},
 
 //load data
 dataDicts = d3.json("data/crime_2003.json", function(error, data) {
-  alert(error);
   console.log(data);
 
   var yScale = d3.scaleLinear()

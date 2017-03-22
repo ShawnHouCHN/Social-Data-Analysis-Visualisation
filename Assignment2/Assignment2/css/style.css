@@ -21,7 +21,7 @@
 }
 
 .year-nav {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   transform: translateY(50%);
   background-color: #fff;
