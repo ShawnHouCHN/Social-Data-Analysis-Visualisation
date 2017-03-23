@@ -115,47 +115,6 @@ dataDicts = d3.json("data/crime_2003.json", function(error, data) {
 });
 
 
-$(".tabften").click(function() {
-
-    dataSecond = d3.json("data/crime_2015.json", function(error, data) {
-      console.log(data);
-      svg.selectAll("circle")
-        .data(data)  // Update with new data
-        .transition()  // Transition from old to new
-        .duration(1000)  // Length of animation
-        .ease('circle')
-        .each("start", function() {  // Start animation
-            d3.select(this)  // 'this' means the current element
-                .attr("fill", "red")  // Change color
-                .attr("r", 5);  // Change size
-        })
-        .delay(function(d, i) {
-            return i / data.length * 500;  // Dynamic delay (i.e. each item delays a little longer)
-        })
-       .attr('cx',function(d){
-        return xScale(d.PR);
-       })
-       .attr('cy',function(d){
-        return yScale(d.VT);
-       })
-       .attr('r',function(d){
-        return rScale(d.TOT);
-       })
-       .style('fill-opacity',0.7)
-       .style('fill', function(d) { return color(cValue(d));})
-        .each("end", function() {  // End animation
-            d3.select(this)  // 'this' means the current element
-                .transition()
-                .duration(500)
-        });
-
-      });
-
- });
-
-
-
-
 
 
 //add svg canvas
