@@ -4,32 +4,32 @@ var margin = {top: 20, right: 20, bottom: 30, left: 40},
     width = 1160 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
 
-
+var xScale, yScale, rScale, yAxis, xAxis, cValue,cValue2, legend, legend2;
 //load data
 dataDicts = d3.json("data/crime_2003.json", function(error, data) {
   console.log(data);
 
-  var yScale = d3.scaleLinear()
+  yScale = d3.scaleLinear()
 			  .domain(d3.extent(data,function(d){return d.VT;}))
 			  .range([height,0])
 			  .nice();
 
-	var yAxis = d3.axisLeft(yScale);
+	yAxis = d3.axisLeft(yScale);
 
-	var xScale = d3.scaleLinear()
+	xScale = d3.scaleLinear()
 			   .domain(d3.extent(data,function(d){return d.PR;}))
 			   .range([0,width])
 			   .nice();
 
-	var xAxis = d3.axisBottom(xScale).ticks(5);
+	xAxis = d3.axisBottom(xScale).ticks(5);
 
-	var rScale= d3.scaleSqrt()
+	rScale= d3.scaleSqrt()
 				  .domain([0,d3.max(data,function(d){return d.TOT;})])
 				  .range([0,20]);
 
 	// setup fill color
 	// setup fill color
-	var cValue = function(d) { return d.TOT;}, color = d3.scaleOrdinal(d3.schemeCategory10);
+	cValue = function(d) { return d.TOT;}, color = d3.scaleOrdinal(d3.schemeCategory10);
 
 	// x-axis
 	svg.append("g")
@@ -89,7 +89,7 @@ dataDicts = d3.json("data/crime_2003.json", function(error, data) {
 
     
       // draw legend
-  var legend = svg.selectAll(".legend")
+  legend = svg.selectAll(".legend")
       .data(color.domain())
       .enter().append("g")
       .attr("class", "legend")
@@ -115,7 +115,137 @@ dataDicts = d3.json("data/crime_2003.json", function(error, data) {
 });
 
 
+d3.selectAll(".tabften").on('click',function() {
 
+    dataSecond = d3.json("data/crime_2015.json", function(error, data) {
+      console.log(data);
+      cValue = function(d) { return d.TOT;}, color = d3.scaleOrdinal(d3.schemeCategory10);
+      svg.selectAll("circle")
+        .data(data)  // Update with new data
+        .transition()  // Transition from old to new
+        .duration(1000)  // Length of animation
+        //.ease('circle')
+        .on("start", function() {  // Start animation  (d3 v4 uses on, d3 v3 uses each keyword!!!!!)
+            d3.select(this)  // 'this' means the current element
+                .attr("fill", "red")  // Change color
+                .attr("r", 5);  // Change size
+        })
+        .delay(function(d, i) {
+            return i / data.length * 500;  // Dynamic delay (i.e. each item delays a little longer)
+        })
+       .attr('cx',function(d){
+        return xScale(d.PR);
+       })
+       .attr('cy',function(d){
+        return yScale(d.VT);
+       })
+       .attr('r',function(d){
+        return rScale(d.TOT);
+       })
+       .style('fill-opacity',0.7)
+       .style('fill', function(d) { return color(cValue(d));})
+       .on("end", function() {  // End animation
+            d3.select(this)  // 'this' means the current element
+                .transition()
+                .duration(500)
+        });
+
+
+
+  svg.selectAll(".legend").remove();
+             // draw legend
+  legend = svg.selectAll(".legend")
+      .data(color.domain())
+      .enter().append("g")
+      .attr("class", "legend")
+      .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
+
+  // draw legend colored rectangles
+    legend.append("rect")
+      .attr("x", width - 5)
+      .attr("width", 18)
+      .attr("height", 18)
+      .style("fill", color)
+      .style('fill-opacity',0.7);
+
+    // draw legend text
+    legend.append("text")
+      .attr("x", width - 10)
+      .attr("y", 9)
+      .attr("dy", ".35em")
+      .style("text-anchor", "end")
+      .style("font-size","50%")
+      .text(function(d) { return d;});
+
+      });
+
+ });
+
+
+d3.selectAll(".tabthree").on('click',function() {
+
+dataDicts = d3.json("data/crime_2003.json", function(error, data) {
+ cValue = function(d) { return d.TOT;}, color = d3.scaleOrdinal(d3.schemeCategory10);
+      svg.selectAll("circle")
+        .data(data)  // Update with new data
+        .transition()  // Transition from old to new
+        .duration(1000)  // Length of animation
+        //.ease('circle')
+        .on("start", function() {  // Start animation  (d3 v4 uses on, d3 v3 uses each keyword!!!!!)
+            d3.select(this)  // 'this' means the current element
+                .attr("fill", "red")  // Change color
+                .attr("r", 5);  // Change size
+        })
+        .delay(function(d, i) {
+            return i / data.length * 500;  // Dynamic delay (i.e. each item delays a little longer)
+        })
+       .attr('cx',function(d){
+        return xScale(d.PR);
+       })
+       .attr('cy',function(d){
+        return yScale(d.VT);
+       })
+       .attr('r',function(d){
+        return rScale(d.TOT);
+       })
+       .style('fill-opacity',0.7)
+       .style('fill', function(d) { return color(cValue(d));})
+       .on("end", function() {  // End animation
+            d3.select(this)  // 'this' means the current element
+                .transition()
+                .duration(500)
+        });
+
+
+
+  svg.selectAll(".legend").remove();
+             // draw legend
+  legend = svg.selectAll(".legend")
+      .data(color.domain())
+      .enter().append("g")
+      .attr("class", "legend")
+      .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
+
+  // draw legend colored rectangles
+    legend.append("rect")
+      .attr("x", width - 5)
+      .attr("width", 18)
+      .attr("height", 18)
+      .style("fill", color)
+      .style('fill-opacity',0.7);
+
+    // draw legend text
+    legend.append("text")
+      .attr("x", width - 10)
+      .attr("y", 9)
+      .attr("dy", ".35em")
+      .style("text-anchor", "end")
+      .style("font-size","50%")
+      .text(function(d) { return d;});
+
+      });
+
+});
 
 //add svg canvas
 var svg = d3.select("#main")
