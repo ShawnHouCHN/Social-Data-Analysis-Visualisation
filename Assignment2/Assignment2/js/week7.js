@@ -10,14 +10,14 @@ dataDicts = d3.json("data/crime_2003.json", function(error, data) {
   console.log(data);
 
   yScale = d3.scaleLinear()
-			  .domain(d3.extent(data,function(d){return d.VT;}))
+			  .domain([0,d3.max(data,function(d){return d.VT;})])
 			  .range([height,0])
 			  .nice();
 
 	yAxis = d3.axisLeft(yScale);
 
 	xScale = d3.scaleLinear()
-			   .domain(d3.extent(data,function(d){return d.PR;}))
+			   .domain([0, d3.max(data,function(d){return d.PR;})])
 			   .range([0,width])
 			   .nice();
 
