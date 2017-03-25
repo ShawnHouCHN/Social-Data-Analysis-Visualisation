@@ -1,62 +1,62 @@
 [
  {
    "DST": "BAYVIEW",
-   "VT": 665,
-   "PR": 3,
+   "VT": 985,
+   "PR": 7,
    "TOT": 9334
  },
  {
    "DST": "CENTRAL",
-   "VT": 402,
-   "PR": 28,
+   "VT": 552,
+   "PR": 44,
    "TOT": 10342
  },
  {
    "DST": "INGLESIDE",
-   "VT": 952,
-   "PR": 3,
+   "VT": 1368,
+   "PR": 5,
    "TOT": 8585
  },
  {
    "DST": "MISSION",
-   "VT": 808,
-   "PR": 28,
+   "VT": 1198,
+   "PR": 66,
    "TOT": 12785
  },
  {
    "DST": "NORTHERN",
-   "VT": 655,
-   "PR": 29,
+   "VT": 945,
+   "PR": 42,
    "TOT": 10569
  },
  {
    "DST": "PARK",
-   "VT": 418,
+   "VT": 640,
    "PR": 1,
    "TOT": 5302
  },
  {
    "DST": "RICHMOND",
-   "VT": 390,
+   "VT": 561,
    "PR": 9,
    "TOT": 5131
  },
  {
    "DST": "SOUTHERN",
-   "VT": 549,
-   "PR": 88,
+   "VT": 795,
+   "PR": 96,
    "TOT": 15974
  },
  {
    "DST": "TARAVAL",
-   "VT": 566,
-   "PR": 21,
+   "VT": 789,
+   "PR": 81,
    "TOT": 7114
  },
  {
    "DST": "TENDERLOIN",
-   "VT": 73,
-   "PR": 7,
+   "VT": 113,
+   "PR": 23,
    "TOT": 7320
  }
 ]
