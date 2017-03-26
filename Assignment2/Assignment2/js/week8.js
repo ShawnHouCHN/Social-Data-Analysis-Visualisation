@@ -161,6 +161,10 @@ d3.selectAll(".tabk").on("click", function() {
 	 svg2.selectAll("circle")
 			 //.data(KM_data)
 			 .transition()
+			 .delay(function(d, i) { 
+						   return i / KM_data.length * 1000;
+			 })
+			 .duration(1000) 
 			 .style("fill", function(d) {
 				 return colors(d[K_neigh]);
 				 });
