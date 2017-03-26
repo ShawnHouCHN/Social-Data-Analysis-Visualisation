@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title> San Francisco Prostitution - KMeans</title>
+		<script src="http://d3js.org/d3.v4.min.js"></script>
+		<style type="text/css">
+
+button {
+    color: #6e6e6e;
+    font: bold 12px Helvetica, Arial, sans-serif;
+    text-decoration: none;
+    padding: 7px 12px;
+    position: relative;
+    display: inline-block;
+    text-shadow: 0 1px 0 #fff;
+    -webkit-transition: border-color .218s;
+    -moz-transition: border .218s;
+    -o-transition: border-color .218s;
+    transition: border-color .218s;
+    background: #f3f3f3;
+    background: -webkit-gradient(linear,0% 40%,0% 70%,from(#F5F5F5),to(#F1F1F1));
+    background: -moz-linear-gradient(linear,0% 40%,0% 70%,from(#F5F5F5),to(#F1F1F1));
+    border: solid 1px #dcdcdc;
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    margin-right: 10px;
+}
+
+button:hover {
+    color: #333;
+    border-color: #999;
+    -moz-box-shadow: 0 2px 0 rgba(0, 0, 0, 0.2);
+	  -webkit-box-shadow:0 2px 5px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+}
+
+button:active {
+    color: #000;
+    border-color: #444;
+}
+
+		</style>
+	</head>
+
+	<body>
+		<script type="text/javascript">
+
+			//Width and height
+			var w = 500;
+			var h = 500;
+
+			var colors = d3.scaleOrdinal(d3.schemeCategory10);
+
+			//Define a projection to project 3D space to 2D
+			var projection = d3.geoMercator()
+				 .center([-122.433701, 37.767683])
+				 .translate([w/2, h/2]) 	// translate projection to center
+				 .scale([175000]); 				// 1000 is default, smaller is zoom out
+
+			//Define default path generator
+			var path = d3.geoPath()
+				.projection(projection);
+
+			//Create SVG element
+			var svg = d3.select("body")
+						.append("svg")
+						.attr("width", w)
+						.attr("height", h);
+
+
+			//Load in GeoJSON data
+			d3.json("data/sfpddistricts.geojson", function(json) {
+
+				//Bind data and create one path per GeoJSON feature
+				svg.selectAll("path")
+				   .data(json.features)
+				   .enter()
+				   .append("path")
+					 // the location is a call to path, which takes the feature
+					 // (coordinates) that we pass to it, and makes it into an svg
+				   .attr("d", path)
+					 .style("fill", "lightgray")
+					 .attr("stroke", "rgba(0, 0, 0, 0.5)")
+					 .attr("stroke-width", 0.5);
+
+					 // plot the PR dots
+					 d3.json("data/kmeansPR-values.json", function(data) {
+
+						 svg.selectAll("circle")
+							 .data(data)
+							 .enter()
+							 .append("circle")
+							 .attr("cx", function(d) {
+											 return projection([d[0], d[1]])[0];
+							 })
+							 .attr("cy", function(d) {
+											 return projection([d[0], d[1]])[1];
+							 })
+							 .attr("r", 1.8)
+							 .style("fill", function(d) {
+								 return colors(d[2]);
+							 })
+							 .style("opacity", 0.75);
+
+							 // plot original centers for k2
+							 d3.json("data/cluster_centers.json", function(centers) {
+
+								 var curr_centers = centers[0];
+
+								 svg.selectAll(".center")
+								 	.data(curr_centers)
+									.enter()
+									.append("circle")
+									.attr("cx", function(d) {
+													return projection([d[0], d[1]])[0];
+									})
+									.attr("cy", function(d) {
+													return projection([d[0], d[1]])[1];
+									})
+									.attr("r", 2.8)
+									.attr("class", "center")
+									.style("fill", 'black');
+
+							 }) // end orig centers, keep wrapped in dots so dot's don't overlap
+
+							 // plot neighbourhood names
+							 d3.json("data/dist_locs.json", function(centers) {
+
+								 console.log(centers);
+
+								 svg.selectAll(".dist_name")
+									.data(centers)
+									.enter()
+									.append("text")
+									.attr("x", function(d) {
+													return projection(d.loc)[0];
+									})
+									.attr("y", function(d) {
+													return projection(d.loc)[1];
+									})
+									.attr("class", "dist_name")
+									.text(function(d) {
+										return d.dist;
+									})
+
+							 }) // end orig centers, keep wrapped in dots so dot's don't overlap
+
+				}) // end orig kmeans json
+
+
+
+					 // ## For interactivity ##
+           d3.selectAll("button")
+             .on("click", function() {
+
+							 // grab the element name
+							 var K_neigh = String(d3.select(this).text()).slice(-1);
+
+							 // plot points
+							 d3.json("data/kmeansPR-values.json", function(data) {
+
+								 svg.selectAll("circle")
+									 .data(data)
+									 .transition()
+									 .style("fill", function(d) {
+										 return colors(d[K_neigh]);
+									 })
+
+
+									 // dynamic plot the centers on click
+									 d3.json("cluster_centers.json", function(centers) {
+
+										 curr_centers = centers[K_neigh - 2];
+
+										 svg.selectAll(".center")
+										 	.remove();
+
+										 svg.selectAll(".center")
+											.data(curr_centers)
+											.enter()
+											.append("circle")
+											.attr("cx", function(d) {
+															return projection([d[0], d[1]])[0];
+											})
+											.attr("cy", function(d) {
+															return projection([d[0], d[1]])[1];
+											})
+											.attr("r", 2.8)
+											.attr("class", "center")
+											.style("fill", 'black');
+
+
+									 }) // end click cluster centers load
+
+							 }) // end click kmeans json load
+
+             }) // end on click
+
+						 .on("mouseover", function() {
+
+							 // grab the element name
+							var K_neigh = String(d3.select(this).text()).slice(-1);
+							console.log(K_neigh);
+
+							 // dynamic plot the centers on click
+							 d3.json("data/cluster_centers.json", function(centers) {
+
+								 curr_centers = centers[K_neigh - 2];
+								 console.log(curr_centers);
+
+								 svg.selectAll(".hov_center")
+									.data(curr_centers)
+									.enter()
+									.append("circle")
+									.attr("cx", function(d) {
+													return projection([d[0], d[1]])[0];
+									})
+									.attr("cy", function(d) {
+													return projection([d[0], d[1]])[1];
+									})
+									.attr("r", 2.8)
+									.attr("class", "hov_center")
+									.style("fill", 'red');
+
+
+							 }) // end click cluster centers load
+
+						 });
+
+			}); // end spfd.geojson load
+
+			// add district names
+			// add
+
+		</script>
+
+
+		<br>
+		<button type="button">K: 2</button>
+		<button type="button">K: 3</button>
+		<button type="button">K: 4</button>
+		<button type="button">K: 5</button>
+		<button type="button">K: 6</button>
+
+
+	</body>
+</html>

@@ -1,6 +1,6 @@
 var dataDicts,dataSecond; 
 
-var margin = {top: 20, right: 20, bottom: 30, left: 40},
+var margin = {top: 20, right: 20, bottom: 30, left: 50},
     width = 1160 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
 
@@ -31,6 +31,14 @@ dataDicts = d3.json("data/crime_2003.json", function(error, data) {
 	// setup fill color
 	cValue = function(d) { return d.TOT;}, color = d3.scaleOrdinal(d3.schemeCategory10);
 
+
+  svg.append("text")
+        .attr("x", (width / 2))             
+        .attr("y", 0 - (margin.top / 3))
+        .attr("text-anchor", "middle")
+        .attr("class", "title") 
+        .style("font-size", "16px")  
+        .text("Prostitution VS Vehicle Theft 2003");
 	// x-axis
 	svg.append("g")
       .attr("class", "x axis")
@@ -43,6 +51,12 @@ dataDicts = d3.json("data/crime_2003.json", function(error, data) {
       .attr("y", -6)
       .style("text-anchor", "end");
 
+  svg.append("text")      // text label for the x axis
+      .attr("x", width / 2 )
+      .attr("y",  height + margin.bottom)
+      .style("text-anchor", "middle")
+      .text("Prostitution");
+
   	// y-axis
   svg.append("g")
       .attr("class", "y axis")
@@ -54,7 +68,14 @@ dataDicts = d3.json("data/crime_2003.json", function(error, data) {
       .attr("y", 6)
       .attr("dy", ".71em")
       .style("text-anchor", "end");
-      
+
+  svg.append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("y", 0 - margin.left)
+        .attr("x",0 - (height / 2))
+        .attr("dy", "1em")
+        .style("text-anchor", "middle")
+        .text("Vehicle Theft");
 
 
    	svg.selectAll('circle')
@@ -152,7 +173,31 @@ d3.selectAll(".tabften").on('click',function() {
 
 
 
+
   svg.selectAll(".legend").remove();
+  svg.selectAll(".title").remove();
+
+  svg.append("text")
+      .attr("x", (width / 2))             
+      .attr("y", 0 - (margin.top / 3))
+      .attr("text-anchor", "middle")  
+      .attr("class", "title")  
+      .style("font-size", "16px")  
+      .text("Prostitution VS Vehicle Theft 2015");  
+
+    svg.append("text")      // text label for the x axis
+      .attr("x", width / 2 )
+      .attr("y",  height + margin.bottom)
+      .style("text-anchor", "middle")
+      .text("Prostitution");
+
+  svg.append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("y", 0 - margin.left)
+        .attr("x",0 - (height / 2))
+        .attr("dy", "1em")
+        .style("text-anchor", "middle")
+        .text("Vehicle Theft");
              // draw legend
   legend = svg.selectAll(".legend")
       .data(color.domain())
@@ -219,6 +264,30 @@ dataDicts = d3.json("data/crime_2003.json", function(error, data) {
 
 
   svg.selectAll(".legend").remove();
+  svg.selectAll(".title").remove();
+
+  svg.append("text")
+      .attr("x", (width / 2))             
+      .attr("y", 0 - (margin.top / 3))
+      .attr("text-anchor", "middle")  
+      .attr("class", "title")  
+      .style("font-size", "16px")  
+      .text("Prostitution VS Vehicle Theft 2003");  
+
+
+  svg.append("text")      // text label for the x axis
+      .attr("x", width / 2 )
+      .attr("y",  height + margin.bottom)
+      .style("text-anchor", "middle")
+      .text("Prostitution");
+
+  svg.append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("y", 0 - margin.left)
+        .attr("x",0 - (height / 2))
+        .attr("dy", "1em")
+        .style("text-anchor", "middle")
+        .text("Vehicle Theft");
              // draw legend
   legend = svg.selectAll(".legend")
       .data(color.domain())
