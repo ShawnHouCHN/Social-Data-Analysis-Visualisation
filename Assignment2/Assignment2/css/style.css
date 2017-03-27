@@ -46,7 +46,7 @@
   font: normal 16px sans-serif;
 
   padding: 45px 50px;
-  margin-top: 80px;
+  /*margin-top: 20px;*/
 }
 
 .footer-distributed .footer-left p{
@@ -54,6 +54,7 @@
   font-size: 14px;
   margin: 0;
 }
+
 
 /* Footer links */
 
