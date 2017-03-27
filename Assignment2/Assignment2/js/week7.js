@@ -118,7 +118,8 @@ dataDicts = d3.json("data/crime_2003.json", function(error, data) {
 
   // draw legend colored rectangles
   	legend.append("rect")
-      .attr("x", width - 5)
+      .attr("x", width - 2)
+      .attr("y", height/2)
       .attr("width", 18)
       .attr("height", 18)
       .style("fill", color)
@@ -126,8 +127,8 @@ dataDicts = d3.json("data/crime_2003.json", function(error, data) {
 
   	// draw legend text
   	legend.append("text")
-      .attr("x", width - 10)
-      .attr("y", 9)
+      .attr("x", width - 8)
+      .attr("y", height/2+10)
       .attr("dy", ".35em")
       .style("text-anchor", "end")
       .style("font-size","50%")
