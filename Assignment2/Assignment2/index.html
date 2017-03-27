@@ -85,7 +85,18 @@
                 <div>
                     <div class="clearfix"></div>
                     <h2 class="section-heading">Assignment 2A: One scatter plot and two datasets</h2>
-                    <P>Below is a data visualization of Prostitution and Vehicle Theft in San Francisco in 2003 and 2015. Each bubble represent a SFPD district. The size of the bubble corresponds to the total amount of crimes in that district that year (The total number is also presented as legend to the right). The coordinates of the bubbles are the amount of prostitution(X axis) and vehicle theft(Y axis) respectively. You can click the two navigation tabs below to transit between plots</P>
+                    <P>Below is a data visualization of Prostitution and Vehicle Theft in San Francisco in 2003 and 2015. You can click the two navigation tabs below to transit between plots. All required features and questions are included in the visualisation and answered as below.</P>
+                    <ul class="custom-bullet">
+                        <li>Each point in the plot is colored differently to correspond to each districts, while the legends on the right correspond to the total amount of crimes in each district.</li>
+                        <li>Points are labeled(it also shows the amount of prostitution and vehicle theft cases in the district when you hover mouse over the points). </li>
+                        <li>The radius of a point is proportional to total number of crimes in that district</li>
+                        <li>The x-axis corresponds to total number of PROSTITUTION incidents</li>
+                        <li>The y-axis corresponds to total number of VEHICLE THEFT incidents</li>
+                        <li>Transition between 2003 to 2015 encounters an animation of dwindling the size of all points to fixed size and then expanding back in the end.</li>
+                        <li>Axis scales are fixed on x and y for both 2003 and 2015</li>
+                        <li>The axes are kept constant to make it easier to compare the values of the two years. With the constant axes it is easy to see that the general amount of the two focus crimes has declined</li>
+                    </ul>
+
                     <ul class="nav nav-tabs year-nav">
                         <li class="active"><a class="tabthree" data-toggle="tab" href="#tabthree">2003</a></li>
                         <li><a class="tabften" data-toggle="tab" href="#tabften">2015</a></li>
@@ -93,17 +104,14 @@
                     <div class="tab-content">
                       <div id="tabthree" class="tab-pane fade in active">
                         <h3>Prostitution & Vehicle Theft 2003</h3>
-                        <p>Prostitution was centered in Mission, Nothern and Tenderloin in 2003 while vehicle theft majorly happened in Ingleside, Bayview and Taraval. Generally, vehicle theft case occured much more than prostitution.</p>
                       </div>
                       <div id="tabften" class="tab-pane fade">
                         <h3>Prostitution & Vehicle Theft 2015</h3>
-                        <p>´The trend was same in 2015. vehicle theft cases happened much more times and more dispersive than prostitution. Besides, the top 3 most occurred district for prostitution is Mission, Taraval and Southern while it is Ingleside, Mission and Bayview for vehicle theft cases.</p>
                       </div>
                     </div>
                     <div id="main">
                     </div>
                     <br>
-                    <p>Notice: The axes are kept constant to make it easier to compare the values of the two years. With the constant axes it is easy to see that the general amount of the two focus crimes has declined. </p>
                 </div>
             </div>
 
@@ -164,11 +172,24 @@
             </div>
 
         </div>
-        <!-- /.container -->
 
     </div>
-    <!-- /.content-section-b -->
-    </section>
+
+    <footer class="footer-distributed">
+
+            <div class="footer-right">
+                <a href="data.zip"><i class="fa fa-book"></i></a>
+                <a href="https://github.com/ShawnHouCHN/Social-Data-Analysis-Visualisation/tree/master/Assignment2/Assignment2"><i class="fa fa-github"></i></a>
+            </div>
+
+            <div class="footer-left">
+                <p>Course: 02806 Social Data Analyse and Visualisation 2017</p>
+                <p>Lecturer: Sune Lehmann Jørgensen</p>
+            </div>
+
+    </footer>
+
+
 
   <script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
   <script type="text/javascript" src="js/week7.js"></script>
