@@ -134,13 +134,22 @@ dataDicts = d3.json("data/crime_2003.json", function(error, data) {
       .style("font-size","50%")
       .text(function(d) { return d;});
 
+
+    legend.append("text")
+      .attr("x", width - 30)
+      .attr("y", height/2+10)
+      .attr("dy", ".35em")
+      .style("text-anchor", "end")
+      .style("font-size","50%")
+      .text(function(d,i) { return data[i].DST+": ";});
+
 });
 
 
 d3.selectAll(".tabften").on('click',function() {
 
     dataSecond = d3.json("data/crime_2015.json", function(error, data) {
-      console.log(data);
+      //console.log(data);
       cValue = function(d) { return d.TOT;}, color = d3.scaleOrdinal(d3.schemeCategory10);
       svg.selectAll("circle")
         .data(data)  // Update with new data
@@ -223,6 +232,14 @@ d3.selectAll(".tabften").on('click',function() {
       .style("text-anchor", "end")
       .style("font-size","50%")
       .text(function(d) { return d;});
+
+    legend.append("text")
+      .attr("x", width - 30)
+      .attr("y", height/2+10)
+      .attr("dy", ".35em")
+      .style("text-anchor", "end")
+      .style("font-size","50%")
+      .text(function(d,i) { return data[i].DST+": ";});
 
       });
 
@@ -314,6 +331,14 @@ dataDicts = d3.json("data/crime_2003.json", function(error, data) {
       .style("text-anchor", "end")
       .style("font-size","50%")
       .text(function(d) { return d;});
+
+    legend.append("text")
+      .attr("x", width - 30)
+      .attr("y", height/2+10)
+      .attr("dy", ".35em")
+      .style("text-anchor", "end")
+      .style("font-size","50%")
+      .text(function(d,i) { return data[i].DST+": ";});
 
       });
 

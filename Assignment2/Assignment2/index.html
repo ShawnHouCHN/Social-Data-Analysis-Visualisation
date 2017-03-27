@@ -62,6 +62,9 @@
                         <hr class="intro-divider">
                         <ul class="list-inline intro-social-buttons">
                             <li>
+                                <a href="http://nbviewer.jupyter.org/github/ShawnHouCHN/Social-Data-Analysis-Visualisation/blob/master/Arnor/week_5/week_5_exercises.ipynb" class="btn btn-default btn-lg"><i class="fa fa-cloud fa-fw"></i> <span class="network-name">Notebook</span></a>
+                            </li>
+                            <li>
                                 <a href="data.zip" class="btn btn-default btn-lg"><i class="fa fa-book fa-fw"></i> <span class="network-name">Dataset</span></a>
                             </li>
                             <li>
@@ -76,6 +79,19 @@
         <!-- /.container -->
 
     </div>
+
+    <section id="assign2o">
+    <div class="content-section-o">
+        <div class="container">
+            <div class="row">
+                <div>
+                     <h3>Foreword:</h3> 
+                    <P>The "Notebook", "Dataset" and "Github" link on the landing page above respectively redirects you to the Ipython notebook of the k-mean computation, the dataset used to plot the d3 diagrams and the github repository hosting this website. Same links can also be found at the right side of the footer of this website.</P>  
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
 
     <section id="assign2a">
     <div class="content-section-a">
@@ -133,6 +149,14 @@
                      <!-- <hr class="section-heading-spacer"> -->
                     <div class="clearfix"></div>
                     <h2 class="section-heading text-right">Assignment 2B: Visualizing Geodata</h2>
+                    <P>Below is an interactive KMeans clustering for prostitution crimes in San Fransisco can be seen. The data used is the total amount of prostitution crimes in San Francisco from 2003 to present time (around 16,000 data points). In the visualization one can alter the K-value between 2 and 6, and see the resulting clustering. The data file used was generated and exported to JSON format using Python, with a file size of 676 KB.
+                    </P><P>
+                    In addition to visualising the clusterings, their stability is also provided. Stability analysis is used to estimate how well a given clustering fits to the data. By doing N random samplings from the dataset and examining the centroid locations for each K after clustering, one can see how “stable” the clusterings are as a function of K. If the cluster centers tend to land in the same place (determined by the closest grid point on a square grid) for different Ns (samplings), the clustering is said to be stable.  This is measured by calculating the intra cosine similarities of each centroid location (that is if the cluster centers are often assigned to the same grid point, there will be a high cosine similarity for that clustering). 
+                    </P><P>
+                    In the case of prostitution in San Fransisco, the clustering with K = 3 gave the stability.
+
+                    The stability analysis can be seen in the iPython notebook provided above (and here).</P>
+                    <P>Notice the nodes color rendering and transiting do not take place at exact same time. The animation would last for a second and nodes are rendered gradually.</P>
                     <ul class="nav nav-tabs year-nav">
                         <li class="active"><a class="tabk" data-toggle="tab" href="#tabktwo">K:2</a></li>
                         <li><a class="tabk" data-toggle="tab" href="#tabkthree">K:3</a></li>
@@ -142,26 +166,19 @@
                     </ul>
                     <div class="tab-content">
                         <div id="tabktwo" class="tab-pane fade in active">
-                            <h3>Prostitution&Vehicle Theft 2003</h3>
-                            <p>This is XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-                                ´XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-                            </p>
+                            <h3>Clustering K=2</h3>
                         </div>
                         <div id="tabkthree" class="tab-pane fade">
-                            <h3>Prostitution&Vehicle Theft 2015</h3>
-                            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                            <h3>Clustering K=3</h3>
                         </div>
                         <div id="tabkfour" class="tab-pane fade">
-                            <h3>Prostitution&Vehicle Theft 2015</h3>
-                            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                            <h3>Clustering K=4</h3>
                         </div>
                         <div id="tabkfive" class="tab-pane fade">
-                            <h3>Prostitution&Vehicle Theft 2015</h3>
-                            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                            <h3>Clustering K=5</h3>
                         </div>
                         <div id="tabksix" class="tab-pane fade">
-                            <h3>Prostitution&Vehicle Theft 2015</h3>
-                            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                            <h3>Clustering K=6</h3>
                         </div>
                     </div>
                 </div>
@@ -178,6 +195,7 @@
     <footer class="footer-distributed">
 
             <div class="footer-right">
+                <a href="http://nbviewer.jupyter.org/github/ShawnHouCHN/Social-Data-Analysis-Visualisation/blob/master/Arnor/week_5/week_5_exercises.ipynb"><i class="fa fa-cloud"></i></a>
                 <a href="data.zip"><i class="fa fa-book"></i></a>
                 <a href="https://github.com/ShawnHouCHN/Social-Data-Analysis-Visualisation/tree/master/Assignment2/Assignment2"><i class="fa fa-github"></i></a>
             </div>
