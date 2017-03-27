@@ -7,7 +7,7 @@ var margin = {top: 20, right: 20, bottom: 30, left: 50},
 var xScale, yScale, rScale, yAxis, xAxis, cValue,cValue2, legend, legend2;
 //load data
 dataDicts = d3.json("data/crime_2003.json", function(error, data) {
-  console.log(data);
+  //console.log(data);
 
   yScale = d3.scaleLinear()
 			  .domain([0,d3.max(data,function(d){return d.VT;})])
