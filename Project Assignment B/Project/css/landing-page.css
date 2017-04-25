@@ -57,6 +57,11 @@ h6 {
     border-bottom: 1px solid rgba(0,0,0,0.2);
 }
 
+.section-divider {
+    width: 400px;
+    border-top: 1px solid #f8f8f8;
+}
+
 .intro-divider-top {
     width: 800px;
     border-top: 1px solid #f8f8f8;
@@ -98,25 +103,47 @@ h6 {
     letter-spacing: 2px;
 }
 
-.content-section-a {
+.content-section-intro{
     padding: 50px 0;
-    background-color: #f8f8f8;
+    background-color: #222233;   
 }
 
-.content-section-b {
+.content-section-preliminary {
     padding: 50px 0;
-    border-top: 1px solid #e7e7e7;
-    border-bottom: 1px solid #e7e7e7;
+    background-color: #093145;
+}
+
+.content-section-machine {
+    padding: 50px 0;
+    background-color: #3C6478; 
 }
 
 .section-heading {
     margin-bottom: 30px;
+    color: #AACCFF;
+}
+
+.section-subheading{
+    margin-bottom: 10px;
+    color: #EBC944; 
 }
 
 .section-heading-spacer {
     float: left;
     width: 200px;
     border-top: 3px solid #e7e7e7;
+}
+
+.blue-text{
+    color: #AACCFF;
+}
+
+.orange-text{
+    color: #EBC944;
+}
+
+.dataset-link{
+    color: #EBC944;
 }
 
 .banner {
@@ -139,6 +166,11 @@ h6 {
 .banner-social-buttons {
     float: right;
     margin-top: 0;
+}
+
+.row{
+    margin-right: 15px;
+    margin-left: 15px;
 }
 
 @media(max-width:1199px) {
