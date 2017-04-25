@@ -111,6 +111,7 @@
             <div class="row">
                 <div>
                     <h2 class="section-heading">Intro</h2>
+                    <hr class="header-divider-top">
                     <P class="blue-text">The project focus on analysing the motor vehicle accidents in NYC registered since July 1st 2012. The original dataset can be extracted from Open City website at <a class="dataset-link" href="https://data.cityofnewyork.us/Public-Safety/NYPD-Motor-Vehicle-Collisions/h9gi-nx95" >NYPD Motor Vehicle Collisions | NYC Open Data</a>. Besides, two addictional datasets are used and merged with the fundemental dataset into an integration. One is the speed limit data given by  <a class="dataset-link" href="http://www.nyc.gov/html/dot/html/about/vz_datafeeds.shtml">NYC DOT</a>, the other is the weather data extracted from  <a class="dataset-link"  href="https://www.wunderground.com/">Weather Underground</a>. As weather undergound API requires a valid license, the data embedded into the project is extracted by scrapping the website by <a class="dataset-link" href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/">Beautifulsoup 4</a> and manually parsed it afterwards. The integrated dataset (CSV) can be downloaded at <a class="dataset-link" href="#">here</a>.
                     <P class="blue-text"> This website introduces two main sections of the analysis. Firstly, preliminary analysis is performed against the dataset including analysing of the spatio and temporal distribution of accidents. Secondly, Several Machine learning models are implmented on the dataset including clustering, correlations and etc. 
                 </div>
@@ -130,10 +131,12 @@
     	 <div class="container">
             <div class="row">
             	<h2 class="section-heading text-right">Priliminary Analysis</h2>
+            	<hr class="header-divider-top">
                 <div>
                 <section id="temporal">
                     <div class="clearfix"></div>
                     <h3 class="section-subheading">Temporal Distribution</h2>
+                    <hr class="subheader-divider-top">
                     <P class="blue-text">There are several bar charts included in this section to reveal some statstic natures of the integrated dataset we work on. Some interesting perspectives are visualised and analysed afterwards. <span class="orange-text">D3.js/Plotly.js </span> are used for all the plots below.</P>
                     <br>
                 </section>
@@ -142,30 +145,73 @@
     			<section id="spatial">
                     <div class="clearfix"></div>
                     <h3 class="section-subheading">Spatial Distribution</h2>
-                    <P class="blue-text">The locations of accident scenes are analyzed in this section. The maps reveal the geographical distributions of accidents. We used <span class="orange-text">Folium.js</span> to plot the maps and make data visualisation interactive.  </P>
+                    <hr class="subheader-divider-top">
+                    <P class="blue-text">The locations of accident scenes are analyzed in this section. The maps reveal the geographical distributions of accidents. We used <a class="dataset-link" href="https://folium.readthedocs.io/en/latest/" >Folium.js</a> to plot the maps and make data visualisation interactive.  </P>
 					
-					<div id="folium-top-10-div">
-					<iframe id="folium-top-10-frame" src="map.html" style="width:500px; height: 500px" frameborder="2">
-					</iframe>
+                    <div id="folium-top-10-all" style="width:100%; height: 550px">
+						<div id="folium-top-10-content">
+						 	<div class="clearfix"></div>
+							<h4 class="orange-text"><i class="fa fa-hand-o-right" aria-hidden="true"></i> 1. Top 10 Dangerous corners in NYC</h4>
+							<P class="blue-text"> The interactive map to the right shows the <span class="orange-text">top 10 most</span> accident-occurred cross/streets in NYC since July 1st 2012. The <span class="orange-text">color of dots</span> are rendered accordingly based on the amount of accidents happened at that location. The more accident occurred/reported, more red the dot is. Top 10 most dangerous S
+							street names can be seen by <span class="orange-text">clicking the dots</span>.
+							</P>
+							<P class="blue-text">The plot reveals that the cross between <span class="orange-text">Tillary Street </span>and <span class="orange-text">Manhattan Bridge</span> has registered most amount of accidents since July 1st 2012.
+							</P>
+							<P class="blue-text">Same map as well as detailed analysis can be found in the notebook</P>
+						</div>
+						<div id="folium-top-10-div" style="float:right;">
+							<iframe id="folium-top-10-frame" src="map.html" style="width:650px; height: 500px" frameborder="2">
+							</iframe>
+						</div>
 					</div>
-					
-                    <div id="folium-heatmap-div">
+
+
+                    <div id="folium-heatmap-all" style="width:100%; height: 550px">
+                    	<h4 class="orange-text"><i class="fa fa-hand-o-right" aria-hidden="true"></i> 2. Heatmap of each year</h4>
+                    	<div class="clearfix"></div>
+	                    <ul class="nav nav-tabs year-nav">
+	                        <li class="active"><a class="tabthree blue-text" data-toggle="tab" href="#tabtwl">2012</a></li>
+	                        <li><a class="tabften blue-text" data-toggle="tab" href="#tabthrt">2013</a></li>
+	                        <li><a class="tabften blue-text" data-toggle="tab" href="#tabfort">2014</a></li>
+	                        <li><a class="tabften blue-text" data-toggle="tab" href="#tabfift">2015</a></li>
+	                        <li><a class="tabften blue-text" data-toggle="tab" href="#tabsixt">2016</a></li>
+	                        <li><a class="tabften blue-text" data-toggle="tab" href="#tabsevt">2017</a></li>
+	                    </ul>
+
+	                    <div class="tab-content">
+	                      <div id="tabtwl" class="tab-pane fade in active">
+	                        <h5 class="orange-text">Heatmap 2012 </h5>
+							<iframe id="tabtwl-frame" src="heatmap12.html" style="width:800px; height: 400px; display: block; margin-left: auto; margin-right: auto;" frameborder="2">
+							</iframe>
+	                      </div>
+	                      <div id="tabthrt" class="tab-pane fade">
+	                        <h5 class="orange-text">Heatmap 2013 </h5>
+	                        <iframe id="tabthrt-frame" src="heatmap13.html" style="width:800px; height: 400px; display: block; margin-left: auto; margin-right: auto;" frameborder="2">
+							</iframe>
+	                      </div>
+	                       <div id="tabfort" class="tab-pane fade">
+	                        <h5 class="orange-text">Heatmap 2014 </h5>
+	                       	<iframe id="tabfort-frame" src="heatmap14.html" style="width:800px; height: 400px; display: block; margin-left: auto; margin-right: auto;" frameborder="2">
+							</iframe>
+	                      </div>
+	                      <div id="tabfift" class="tab-pane fade">
+	                        <h5 class="orange-text">Heatmap 2015 </h5>
+	                       	<iframe id="tabfift-frame" src="heatmap15.html" style="width:800px; height: 400px; display: block; margin-left: auto; margin-right: auto;" frameborder="2">
+							</iframe>
+	                      </div>
+	                      <div id="tabsixt" class="tab-pane fade">
+	                        <h5 class="orange-text">Heatmap 2016 </h5>
+	                        <iframe id="tabsixt-frame" src="heatmap16.html" style="width:800px; height: 400px; display: block; margin-left: auto; margin-right: auto;" frameborder="2">
+							</iframe>
+	                      </div>
+	                      <div id="tabsevt" class="tab-pane fade">
+	                        <h5 class="orange-text">Heatmap 2017 </h5>
+	                        <iframe id="tabsevt-frame" src="heatmap17.html" style="width:800px; height: 400px; display: block; margin-left: auto; margin-right: auto;" frameborder="2">
+							</iframe>
+	                      </div>
+	                    </div>
                     </div>
 
-                    <ul class="nav nav-tabs year-nav">
-                        <li class="active"><a class="tabthree" data-toggle="tab" href="#tabthree">2003</a></li>
-                        <li><a class="tabften" data-toggle="tab" href="#tabften">2015</a></li>
-                    </ul>
-                    <div class="tab-content">
-                      <div id="tabthree" class="tab-pane fade in active">
-                        <h3>Prostitution & Vehicle Theft 2003</h3>
-                      </div>
-                      <div id="tabften" class="tab-pane fade">
-                        <h3>Prostitution & Vehicle Theft 2015</h3>
-                      </div>
-                    </div>
-                    <div id="main">
-                    </div>
                     <br>
     			</section>
             	</div>

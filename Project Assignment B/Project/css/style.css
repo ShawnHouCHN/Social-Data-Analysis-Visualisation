@@ -56,6 +56,12 @@
     top: 5px;
 }
 
+#folium-top-10-content {
+    display: inline-block;
+    width:450px;
+    height:500px;
+}
+
 .axis line {
   fill: none;
   stroke: #000;
@@ -86,7 +92,7 @@
 
 .tab-content{
   width: 100%;
-  height: 70px;
+  height: 300px;
 }
 
 
