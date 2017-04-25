@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<head>    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script>L_PREFER_CANVAS = false; L_NO_TOUCH = false; L_DISABLE_3D = false;</script>
+    <script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.0.0/leaflet.markercluster-src.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.0.0/leaflet.markercluster.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.0.0/MarkerCluster.Default.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.0.0/MarkerCluster.css" />
+    <link rel="stylesheet" href="https://rawgit.com/python-visualization/folium/master/folium/templates/leaflet.awesome.rotate.css" />
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    
+            <style> #map_ba9abe96895841c6a97bd040264b9e07 {
+                position : relative;
+                width : 100.0%;
+                height: 100.0%;
+                left: 0.0%;
+                top: 0.0%;
+                }
+            </style>
+        
+</head>
+<body>    
+    
+            <div class="folium-map" id="map_ba9abe96895841c6a97bd040264b9e07" ></div>
+        
+</body>
+<script>    
+    
+
+            
+                var southWest = L.latLng(-90, -180);
+                var northEast = L.latLng(90, 180);
+                var bounds = L.latLngBounds(southWest, northEast);
+            
+
+            var map_ba9abe96895841c6a97bd040264b9e07 = L.map(
+                                  'map_ba9abe96895841c6a97bd040264b9e07',
+                                  {center: [40.71,-73.93],
+                                  zoom: 12,
+                                  maxBounds: bounds,
+                                  layers: [],
+                                  worldCopyJump: false,
+                                  crs: L.CRS.EPSG3857
+                                 });
+            
+        
+    
+            var tile_layer_f4a2317563f247da84937a1f6adfb12f = L.tileLayer(
+                'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+                {
+                    maxZoom: 18,
+                    minZoom: 1,
+                    continuousWorld: false,
+                    noWrap: false,
+                    attribution: 'Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://www.openstreetmap.org/copyright">ODbL</a>.',
+                    detectRetina: false
+                    }
+                ).addTo(map_ba9abe96895841c6a97bd040264b9e07);
+
+        
+    
+
+            var circle_marker_76435310ed8e45378b4ef7651ca95dd8 = L.circleMarker(
+                [40.6960346,-73.9845292],
+                {
+                    color: 'red',
+                    weight: 2,
+                    fillColor: 'red',
+                    fillOpacity: 0.6
+                    }
+                )
+                .setRadius(15)
+                .addTo(map_ba9abe96895841c6a97bd040264b9e07);
+            
+    
+            var popup_ebc090cb14f64e49883f0be663c76384 = L.popup({maxWidth: '300'});
+
+            
+                var html_a6151419d5ba440993b5a542da29d86e = $('<div id="html_a6151419d5ba440993b5a542da29d86e" style="width: 100.0%; height: 100.0%;">TILLARY STREET                  </div>')[0];
+                popup_ebc090cb14f64e49883f0be663c76384.setContent(html_a6151419d5ba440993b5a542da29d86e);
+            
+
+            circle_marker_76435310ed8e45378b4ef7651ca95dd8.bindPopup(popup_ebc090cb14f64e49883f0be663c76384);
+
+            
+        
+    
+
+            var circle_marker_9cbe5653ac9e43b1a5f71dd41ec834cf = L.circleMarker(
+                [40.7606005,-73.9643142],
+                {
+                    color: '#f13600',
+                    weight: 2,
+                    fillColor: '#f13600',
+                    fillOpacity: 0.6
+                    }
+                )
+                .setRadius(15)
+                .addTo(map_ba9abe96895841c6a97bd040264b9e07);
+            
+    
+            var popup_445950992f1a413f80663b768e879283 = L.popup({maxWidth: '300'});
+
+            
+                var html_f5c624247022482483e58699a183812e = $('<div id="html_f5c624247022482483e58699a183812e" style="width: 100.0%; height: 100.0%;">EAST 59 STREET                  </div>')[0];
+                popup_445950992f1a413f80663b768e879283.setContent(html_f5c624247022482483e58699a183812e);
+            
+
+            circle_marker_9cbe5653ac9e43b1a5f71dd41ec834cf.bindPopup(popup_445950992f1a413f80663b768e879283);
+
+            
+        
+    
+
+            var circle_marker_bbe87923cbb64b329b4302ee64369001 = L.circleMarker(
+                [40.7572323,-73.9897922],
+                {
+                    color: '#e36500',
+                    weight: 2,
+                    fillColor: '#e36500',
+                    fillOpacity: 0.6
+                    }
+                )
+                .setRadius(15)
+                .addTo(map_ba9abe96895841c6a97bd040264b9e07);
+            
+    
+            var popup_4c3191729b66492ba910801c904f0348 = L.popup({maxWidth: '300'});
+
+            
+                var html_f5ffde1694dc4625b3a9bddb7e501d37 = $('<div id="html_f5ffde1694dc4625b3a9bddb7e501d37" style="width: 100.0%; height: 100.0%;">WEST 42 STREET                  </div>')[0];
+                popup_4c3191729b66492ba910801c904f0348.setContent(html_f5ffde1694dc4625b3a9bddb7e501d37);
+            
+
+            circle_marker_bbe87923cbb64b329b4302ee64369001.bindPopup(popup_4c3191729b66492ba910801c904f0348);
+
+            
+        
+    
+
+            var circle_marker_0004eae850cd4cca92f4ab11303f6cf4 = L.circleMarker(
+                [40.6757357,-73.8968533],
+                {
+                    color: '#d58e00',
+                    weight: 2,
+                    fillColor: '#d58e00',
+                    fillOpacity: 0.6
+                    }
+                )
+                .setRadius(15)
+                .addTo(map_ba9abe96895841c6a97bd040264b9e07);
+            
+    
+            var popup_a25b12d7d5ee4e68ae6b87d6565df2fc = L.popup({maxWidth: '300'});
+
+            
+                var html_3c589d77325d47738d83318b3ef54492 = $('<div id="html_3c589d77325d47738d83318b3ef54492" style="width: 100.0%; height: 100.0%;">ATLANTIC AVENUE                 </div>')[0];
+                popup_a25b12d7d5ee4e68ae6b87d6565df2fc.setContent(html_3c589d77325d47738d83318b3ef54492);
+            
+
+            circle_marker_0004eae850cd4cca92f4ab11303f6cf4.bindPopup(popup_a25b12d7d5ee4e68ae6b87d6565df2fc);
+
+            
+        
+    
+
+            var circle_marker_ea66359e6ea04dc39c205a0b9b989f91 = L.circleMarker(
+                [40.6585778,-73.8906229],
+                {
+                    color: '#c7b000',
+                    weight: 2,
+                    fillColor: '#c7b000',
+                    fillOpacity: 0.6
+                    }
+                )
+                .setRadius(15)
+                .addTo(map_ba9abe96895841c6a97bd040264b9e07);
+            
+    
+            var popup_e6b1409a8c564bc9b0c0d5b262c3f85f = L.popup({maxWidth: '300'});
+
+            
+                var html_1ad6e113e64448dfaff8d4e60d674a01 = $('<div id="html_1ad6e113e64448dfaff8d4e60d674a01" style="width: 100.0%; height: 100.0%;">PENNSYLVANIA AVENUE             </div>')[0];
+                popup_e6b1409a8c564bc9b0c0d5b262c3f85f.setContent(html_1ad6e113e64448dfaff8d4e60d674a01);
+            
+
+            circle_marker_ea66359e6ea04dc39c205a0b9b989f91.bindPopup(popup_e6b1409a8c564bc9b0c0d5b262c3f85f);
+
+            
+        
+    
+
+            var circle_marker_18c862a5aaee46a5a071f053b42df57d = L.circleMarker(
+                [40.7203211,-73.9940403],
+                {
+                    color: '#a4b800',
+                    weight: 2,
+                    fillColor: '#a4b800',
+                    fillOpacity: 0.6
+                    }
+                )
+                .setRadius(15)
+                .addTo(map_ba9abe96895841c6a97bd040264b9e07);
+            
+    
+            var popup_deffd3656e664ac983c55ceed7758684 = L.popup({maxWidth: '300'});
+
+            
+                var html_b780691f760c47978fe6254d93c81071 = $('<div id="html_b780691f760c47978fe6254d93c81071" style="width: 100.0%; height: 100.0%;">KENMARE STREET                  </div>')[0];
+                popup_deffd3656e664ac983c55ceed7758684.setContent(html_b780691f760c47978fe6254d93c81071);
+            
+
+            circle_marker_18c862a5aaee46a5a071f053b42df57d.bindPopup(popup_deffd3656e664ac983c55ceed7758684);
+
+            
+        
+    
+
+            var circle_marker_1f7d3c196afa4c2a9897b7364f4cc1f6 = L.circleMarker(
+                [40.7334973,-73.8703694],
+                {
+                    color: '#72aa00',
+                    weight: 2,
+                    fillColor: '#72aa00',
+                    fillOpacity: 0.6
+                    }
+                )
+                .setRadius(15)
+                .addTo(map_ba9abe96895841c6a97bd040264b9e07);
+            
+    
+            var popup_cbc74e11a9f247d091c457f9639a7fc6 = L.popup({maxWidth: '300'});
+
+            
+                var html_f612d3c6e5024864b230504506bf9b0d = $('<div id="html_f612d3c6e5024864b230504506bf9b0d" style="width: 100.0%; height: 100.0%;">QUEENS BOULEVARD                </div>')[0];
+                popup_cbc74e11a9f247d091c457f9639a7fc6.setContent(html_f612d3c6e5024864b230504506bf9b0d);
+            
+
+            circle_marker_1f7d3c196afa4c2a9897b7364f4cc1f6.bindPopup(popup_cbc74e11a9f247d091c457f9639a7fc6);
+
+            
+        
+    
+
+            var circle_marker_62ad46f263054ff48709feb035a743ff = L.circleMarker(
+                [40.820189,-73.8906752],
+                {
+                    color: '#459c00',
+                    weight: 2,
+                    fillColor: '#459c00',
+                    fillOpacity: 0.6
+                    }
+                )
+                .setRadius(15)
+                .addTo(map_ba9abe96895841c6a97bd040264b9e07);
+            
+    
+            var popup_49cd75a5c1b945858b55fba2a022bbf1 = L.popup({maxWidth: '300'});
+
+            
+                var html_d014c65a665e47b0abe69d2ab9f99fbd = $('<div id="html_d014c65a665e47b0abe69d2ab9f99fbd" style="width: 100.0%; height: 100.0%;">HUNTS POINT AVENUE              </div>')[0];
+                popup_49cd75a5c1b945858b55fba2a022bbf1.setContent(html_d014c65a665e47b0abe69d2ab9f99fbd);
+            
+
+            circle_marker_62ad46f263054ff48709feb035a743ff.bindPopup(popup_49cd75a5c1b945858b55fba2a022bbf1);
+
+            
+        
+    
+
+            var circle_marker_6d1567a22c0e4761bb00b538e6d553f1 = L.circleMarker(
+                [40.7584292,-73.9926328],
+                {
+                    color: '#208e00',
+                    weight: 2,
+                    fillColor: '#208e00',
+                    fillOpacity: 0.6
+                    }
+                )
+                .setRadius(15)
+                .addTo(map_ba9abe96895841c6a97bd040264b9e07);
+            
+    
+            var popup_591333d93e6e4cc19ca4efd12fe370f0 = L.popup({maxWidth: '300'});
+
+            
+                var html_7aab1157ae6045ad834694c173e26a57 = $('<div id="html_7aab1157ae6045ad834694c173e26a57" style="width: 100.0%; height: 100.0%;">WEST 42 STREET                  </div>')[0];
+                popup_591333d93e6e4cc19ca4efd12fe370f0.setContent(html_7aab1157ae6045ad834694c173e26a57);
+            
+
+            circle_marker_6d1567a22c0e4761bb00b538e6d553f1.bindPopup(popup_591333d93e6e4cc19ca4efd12fe370f0);
+
+            
+        
+    
+
+            var circle_marker_9b6ee14bc40a4f6d9c528884b98e3bda = L.circleMarker(
+                [40.7602226,-73.967462],
+                {
+                    color: 'green',
+                    weight: 2,
+                    fillColor: 'green',
+                    fillOpacity: 0.6
+                    }
+                )
+                .setRadius(15)
+                .addTo(map_ba9abe96895841c6a97bd040264b9e07);
+            
+    
+            var popup_2cd099d87d6d4b058fba51aa99c2264d = L.popup({maxWidth: '300'});
+
+            
+                var html_16298e4f92bc4d3c9e53c6a74b3c92f0 = $('<div id="html_16298e4f92bc4d3c9e53c6a74b3c92f0" style="width: 100.0%; height: 100.0%;">3 AVENUE                        </div>')[0];
+                popup_2cd099d87d6d4b058fba51aa99c2264d.setContent(html_16298e4f92bc4d3c9e53c6a74b3c92f0);
+            
+
+            circle_marker_9b6ee14bc40a4f6d9c528884b98e3bda.bindPopup(popup_2cd099d87d6d4b058fba51aa99c2264d);
+
+            
+        
+</script>
