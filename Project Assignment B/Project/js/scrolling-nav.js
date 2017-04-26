@@ -54,3 +54,17 @@ $(".dropdown").hover(
             $('b', this).toggleClass("caret caret-up");                
         });
 });
+
+
+$( function() {
+$( "#slider-range" ).slider({
+      range: "max",
+      min: 2012,
+      max: 2017,
+      value: 2012,
+      slide: function( event, ui ) {
+        $( "#amount" ).val( ui.value );
+      }
+    });
+    $( "#amount" ).val( $( "#slider-range" ).slider( "value" ) );
+  } );

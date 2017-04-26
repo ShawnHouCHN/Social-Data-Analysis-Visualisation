@@ -15,6 +15,7 @@
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
 
   </head>
@@ -137,7 +138,24 @@
                     <div class="clearfix"></div>
                     <h3 class="section-subheading">Temporal Distribution</h2>
                     <hr class="subheader-divider-top">
-                    <P class="blue-text">There are several bar charts included in this section to reveal some statstic natures of the integrated dataset we work on. Some interesting perspectives are visualised and analysed afterwards. <span class="orange-text">D3.js/Plotly.js </span> are used for all the plots below.</P>
+                    <P class="blue-text">There are several bar charts included in this section to reveal some statstic natures of the integrated dataset we work on. Some interesting perspectives are visualised and analysed afterwards. <span class="orange-text">D3.js and Plotly.js </span> are both used for the plots in this section below.</P>
+
+                    <div id="monthly-all" style="width:100%; height: 600px">
+	                    <div class="clearfix"></div>
+						<h4 class="orange-text"><i class="fa fa-hand-o-right" aria-hidden="true"></i> 1. Monthly Statistic of Accidents</h4>
+						<div id="month-plotly" style="width:100%; height: 400px"></div>
+						<div class="clearfix"></div>
+
+						<P class="blue-text">The barchart above shows the monthly statistic of accident which caused any casualties. The plot is fully interactive. You can hide different groups by clicking the legends.</P>
+
+						<P class="blue-text">The overall tendency is  <span class="orange-text">downhilling</span>. The amount of accidents that caused death is <span class="orange-text">generally siginificant lower</span> than the ones caused injury. Meanwhile, an interesting <span class="orange-text">drop occurs in the data from July to Sepetember in 2016</span>.  <a class="dataset-link" href="http://www1.nyc.gov/site/visionzero/news/news.page">DOT</a> as well as NYPD have performed a series of actions to improve the traffic safety in this period which can be seen as the main reason leading to the reduction on the plot. </P>
+					</div>
+
+					<div id="yearly-all" style="width:100%; height: 600px">
+						<div class="clearfix"></div>
+						<h4 class="orange-text"><i class="fa fa-hand-o-right" aria-hidden="true"></i> 2. Yearly Statistic of Accidents in Each District</h4>
+						<div id="slider-range"></div>
+					</div>
                     <br>
                 </section>
 
@@ -159,8 +177,8 @@
 							</P>
 							<P class="blue-text">Same map as well as detailed analysis can be found in the notebook</P>
 						</div>
-						<div id="folium-top-10-div" style="float:right;">
-							<iframe id="folium-top-10-frame" src="map.html" style="width:650px; height: 500px" frameborder="2">
+						<div id="folium-top-10-div" style="float:right; display: inline-block; width:50%;">
+							<iframe id="folium-top-10-frame" src="map.html" style="width:100%; height: 500px" frameborder="2">
 							</iframe>
 						</div>
 					</div>
@@ -223,50 +241,14 @@
     </div>
     </section>
 
-    <section id="assign2b">
+    <section id="machine">
     <div class="content-section-machine">
 
         <div class="container">
 
             <div class="row">
                 <div>
-                     <!-- <hr class="section-heading-spacer"> -->
-                    <div class="clearfix"></div>
-                    <h2 class="section-heading">Machine Learning Models</h2>
-                    <P>Below is an interactive KMeans clustering for prostitution crimes in San Fransisco can be seen. The data used is the total amount of prostitution crimes in San Francisco from 2003 to present time (around 16,000 data points). In the visualization one can alter the K-value between 2 and 6, and see the resulting clustering. The data file used was generated and exported to JSON format using Python, with a file size of 676 KB.
-                    </P><P>
-                    In addition to visualising the clusterings, their stability is also provided. Stability analysis is used to estimate how well a given clustering fits to the data. By doing N random samplings from the dataset and examining the centroid locations for each K after clustering, one can see how “stable” the clusterings are as a function of K. If the cluster centers tend to land in the same place (determined by the closest grid point on a square grid) for different Ns (samplings), the clustering is said to be stable.  This is measured by calculating the intra cosine similarities of each centroid location (that is if the cluster centers are often assigned to the same grid point, there will be a high cosine similarity for that clustering). 
-                    </P><P>
-                    In the case of prostitution in San Fransisco, the clustering with K = 3 gave the stability.
-
-                    The stability analysis can be seen in the iPython notebook provided above (and here).</P>
-                    <P>Notice the nodes color rendering and transiting do not take place at exact same time. The animation would last for a second and nodes are rendered gradually.</P>
-                    <ul class="nav nav-tabs year-nav">
-                        <li class="active"><a class="tabk" data-toggle="tab" href="#tabktwo">K:2</a></li>
-                        <li><a class="tabk" data-toggle="tab" href="#tabkthree">K:3</a></li>
-                        <li><a class="tabk" data-toggle="tab" href="#tabkfour">K:4</a></li>
-                        <li><a class="tabk" data-toggle="tab" href="#tabkfive">K:5</a></li>
-                        <li><a class="tabk" data-toggle="tab" href="#tabksix">K:6</a></li>
-                    </ul>
-                    <div class="tab-content">
-                        <div id="tabktwo" class="tab-pane fade in active">
-                            <h3>Clustering K=2</h3>
-                        </div>
-                        <div id="tabkthree" class="tab-pane fade">
-                            <h3>Clustering K=3</h3>
-                        </div>
-                        <div id="tabkfour" class="tab-pane fade">
-                            <h3>Clustering K=4</h3>
-                        </div>
-                        <div id="tabkfive" class="tab-pane fade">
-                            <h3>Clustering K=5</h3>
-                        </div>
-                        <div id="tabksix" class="tab-pane fade">
-                            <h3>Clustering K=6</h3>
-                        </div>
-                    </div>
-                </div>
-                <div id="maintwo" class="centered">
+                
                 </div>
 
             </div>
@@ -308,12 +290,14 @@
 
 
   <script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
-  <script type="text/javascript" src="js/week7.js"></script>
-  <script type="text/javascript" src="js/week8.js"></script>
- 
+  <script type="text/javascript" src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <!-- <script type="text/javascript" src="js/week7.js"></script> -->
+  <!--  <script type="text/javascript" src="js/week8.js"></script> -->
+  <script type="text/javascript" src="js/project-d3-pre.js"></script>
   <!-- jQuery -->
   <script src="js/jquery.js"></script>
   <script src="js/jquery.easing.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <!-- Bootstrap Core JavaScript -->
   <!--<script type="text/javascript" src="js/ownjs.js"></script> -->
   <script src="js/bootstrap.min.js"></script>
