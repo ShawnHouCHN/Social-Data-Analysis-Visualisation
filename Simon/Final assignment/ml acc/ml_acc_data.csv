@@ -2,3 +2,5 @@ model,acc,var
 random forest,0.614,0.001
 support vector machine,0.651,0.001
 KNN,0.6112,0
+logistic regression,0.650,0.001
+neural network,0.654,0.001
