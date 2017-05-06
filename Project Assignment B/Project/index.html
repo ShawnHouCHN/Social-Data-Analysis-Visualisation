@@ -50,7 +50,11 @@
                         </ul>
                     </li>
                     <li class="dropdown">
-                        <a class="page-scroll" href="#assign2b">Machine Learning</a>
+                        <a class="dropdown-toggle page-scroll" href="#machinelearning" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Machine Learning</a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a class="page-scroll" href="#featurenet">Feature Net</a></li>
+                            <li><a class="page-scroll" href="#performance">Models Accuracy</a></li>
+                        </ul>
                     </li>
 					<li class="dropdown">
                         <a class="dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Downloads</a>
@@ -58,7 +62,7 @@
                             <li><a href="http://nbviewer.jupyter.org/url/shawnhouchn.github.io/Social-Graph-Interaction/project/project_assignmentB.ipynb" target="_blank">iPython Notebook (Preview)</a></li>
                             <li><a href="https://shawnhouchn.github.io/Social-Graph-Interaction/project/project_assignmentB.ipynb" target="_blank">iPython Notebook (Download)</a></li>
                             <li><a href="https://drive.google.com/file/d/0Byd_stTDMHZAVTdEV0xsVXpTSjg/view" target="_blank">GitHub Repository</a></li>
-                            <li><a href="https://drive.google.com/file/d/0Byd_stTDMHZAeDM5NEtQTlU3M3c/view" target="_blank">Merged data (Download)</a></li>
+                            <li><a href="https://drive.google.com/file/d/0BymjCBWE7wFzWHhyV2Y5NjQwX1U/view?usp=sharing" target="_blank">Merged data (Download)</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -84,7 +88,7 @@
                                 <a href="http://nbviewer.jupyter.org/github/ShawnHouCHN/SDAV2017-Assignment2/blob/master/week_5/week_5_exercises.ipynb" class="btn btn-default btn-lg"><i class="fa fa-cloud fa-fw"></i> <span class="network-name">Notebook</span></a>
                             </li>
                             <li>
-                                <a href="data.zip" class="btn btn-default btn-lg"><i class="fa fa-book fa-fw"></i> <span class="network-name">Dataset</span></a>
+                                <a href="https://drive.google.com/file/d/0BymjCBWE7wFzWHhyV2Y5NjQwX1U/view?usp=sharing" class="btn btn-default btn-lg"><i class="fa fa-book fa-fw"></i> <span class="network-name">Dataset</span></a>
                             </li>
                             <li>
                                 <a href="https://github.com/ShawnHouCHN/SDAV2017-Assignment2/tree/master/Assignment2" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Github</span></a>
@@ -99,19 +103,26 @@
 
     </div>
 
-    <section id="prointro">
-     <div class="content-section-intro">
-        <div class="container">
-            <div class="row">
-                <div>
+    <section id="foreword">
+    <div class="content-section-foreword">
+    <div class="container">
+        <div class="row">
+                <div class="col-md-4 hideme">
                  	<div class="clearfix"></div>
                     <h5 class="blue-text">Foreword:</h5> 
                     <P class="blue-text">The corresponding jupyter notebook can be previewed or downloaded by clicking the dropdown list to the right of the navigation bar. Some of the plots in the notebook depend heavily on JS rendering so it is better to be viewed in <span class="orange-text">nbviewer</span>. </P>  
                 </div>
-            </div>
+        </div>
+    </div>
+    </div>
+    </section>
+
+    <section id="prointro">
+     <div class="content-section-intro">
+        <div class="container">
             <div class="row">
-                <div>
-                    <h2 class="section-heading">Intro</h2>
+                <div class="col-sm-8 pull-right hideme">
+                    <h2 class="section-heading">Motivation</h2>
                     <hr class="header-divider-top">
                     <P class="blue-text">The project focus on analysing the motor vehicle accidents in NYC registered since July 1st 2012. The original dataset can be extracted from Open City website at <a class="dataset-link" href="https://data.cityofnewyork.us/Public-Safety/NYPD-Motor-Vehicle-Collisions/h9gi-nx95" >NYPD Motor Vehicle Collisions | NYC Open Data</a>. Besides, two addictional datasets are used and merged with the fundemental dataset into an integration. One is the speed limit data given by  <a class="dataset-link" href="http://www.nyc.gov/html/dot/html/about/vz_datafeeds.shtml">NYC DOT</a>, the other is the weather data extracted from  <a class="dataset-link"  href="https://www.wunderground.com/">Weather Underground</a>. As weather undergound API requires a valid license, the data embedded into the project is extracted by scrapping the website by <a class="dataset-link" href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/">Beautifulsoup 4</a> and manually parsed it afterwards. The integrated dataset (CSV) can be downloaded at <a class="dataset-link" href="#">here</a>.
                     <P class="blue-text"> This website introduces two main sections of the analysis. Firstly, preliminary analysis is performed against the dataset including analysing of the spatio and temporal distribution of accidents. Secondly, Several Machine learning models are implmented on the dataset including clustering, correlations and etc. 
@@ -261,7 +272,7 @@
     </div>
     </section>
 
-    <section id="machine">
+    <section id="machinelearning">
     <div class="content-section-machine">
 
         <div class="container">
@@ -269,14 +280,22 @@
             <div class="row">
 				<h2 class="section-heading text-left">Machine Learning Models</h2>
             	<hr class="header-divider-top">
-            	<div>
+            	<P class="blue-text">For the supervised machine learning part, various models were trained to predict whether an individual gets injured/killed given that there is an accident. Performance was measured with nested cross validation and the feature importance calculated.</P>
+            	<div style="width:100%; height: 400px">
+            	<section id="featurenet">
 				<h3 class="section-subheading">Feature Net - WordCloud</h2>
-                <hr class="subheader-divider-top">
-                <section id="featurenet">
-
+                <hr class="subheader-divider-top">           
+                <div id="word-cloud-content"></div>
                 <div id="word-cloud"></div>
                 </section>
                 </div>
+                <div style="width:100%">
+                <section id="performance">
+                <h3 class="section-subheading">Performance Evaluation of Different Models</h2>
+                <hr class="subheader-divider-top">    
+                <div id="perform-plot"></div>
+                </section>
+               	</div>
             </div>
 
        </div>
@@ -291,7 +310,7 @@
 
             <div class="footer-right">
                 <a href="http://nbviewer.jupyter.org/github/ShawnHouCHN/SDAV2017-Assignment2/blob/master/week_5/week_5_exercises.ipynb"><i class="fa fa-cloud"></i></a>
-                <a href="data.zip"><i class="fa fa-book"></i></a>
+                <a href="https://drive.google.com/file/d/0BymjCBWE7wFzWHhyV2Y5NjQwX1U/view?usp=sharing"><i class="fa fa-book"></i></a>
                 <a href="https://github.com/ShawnHouCHN/SDAV2017-Assignment2/tree/master/Assignment2"><i class="fa fa-github"></i></a>
             </div>
 
@@ -310,6 +329,7 @@
   <!-- <script type="text/javascript" src="js/week7.js"></script> -->
   <!--  <script type="text/javascript" src="js/week8.js"></script> -->
   <script type="text/javascript" src="js/project-d3-pre.js"></script>
+   <script type="text/javascript" src="js/project-d3-ml.js"></script>
   <!-- jQuery -->
   <script src="js/jquery.js"></script>
   <script src="js/jquery.easing.min.js"></script>

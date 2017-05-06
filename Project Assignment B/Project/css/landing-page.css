@@ -119,9 +119,16 @@ h6 {
     letter-spacing: 2px;
 }
 
+.content-section-foreword{
+    padding: 50px 0;
+    background-color: #344152;   
+}
+
+
 .content-section-intro{
     padding: 50px 0;
-    background-color: #222233;   
+    background: url(../img/nyc_night.jpg) no-repeat center center;
+    background-size: cover;  
 }
 
 .content-section-preliminary {
