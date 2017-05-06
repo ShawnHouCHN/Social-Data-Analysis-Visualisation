@@ -146,15 +146,35 @@
 						<div id="month-plotly" style="width:100%; height: 400px"></div>
 						<div class="clearfix"></div>
 
-						<P class="blue-text">The barchart above shows the monthly statistic of accident which caused any casualties. The plot is fully interactive. You can hide different groups by clicking the legends.</P>
+						<P class="blue-text">The barchart above shows the monthly statistic of accident which caused any casualties. The plot is fully interactive. You can hide different groups by clicking the legends or zoom in/out to check the details.</P>
 
 						<P class="blue-text">The overall tendency is  <span class="orange-text">downhilling</span>. The amount of accidents that caused death is <span class="orange-text">generally siginificant lower</span> than the ones caused injury. Meanwhile, an interesting <span class="orange-text">drop occurs in the data from July to Sepetember in 2016</span>.  <a class="dataset-link" href="http://www1.nyc.gov/site/visionzero/news/news.page">DOT</a> as well as NYPD have performed a series of actions to improve the traffic safety in this period which can be seen as the main reason leading to the reduction on the plot. </P>
+
 					</div>
 
 					<div id="yearly-all" style="width:100%; height: 600px">
 						<div class="clearfix"></div>
 						<h4 class="orange-text"><i class="fa fa-hand-o-right" aria-hidden="true"></i> 2. Yearly Statistic of Accidents in Each District</h4>
-						<div id="slider-range"></div>
+						<P class="blue-text">The donut chart below shows the yearly statistic of accident cases in each district. The chart is interactive and the summation of accident of different districts are displayed in the core of the "donut" while mouse is hovering over. Slide "Thumb" below to check difference between years.
+						</P>
+						<br>
+						<div class="range-slider">
+							<input class="range-slider__range" type="range" value="2012" min="2012" max="2017" step="1">
+							<span class="range-slider__value">0</span>
+						</div>
+						<div id="donut-content">
+							<P class="blue-text">
+							<span class="orange-text">While the thumb above slides from 2012 to 2017</span>, Even though data in 2012 and 2017 are incomplete, the precentage of amount of accident of each district against yearly summation in the plot <span class="orange-text">rarely changes</span> during the time. The rank is consistently fixed as below. 
+							</P>
+							<ul class="custom-bullet orange-text">
+							<li>Brooklyn</li>
+							<li>Manhattan</li>
+							<li>Queens</li>
+							<li>Bronx</li>
+							<li>Staten Island</li>
+							</ul>
+						</div>
+						<div id="donut-chart"></div>
 					</div>
                     <br>
                 </section>
@@ -247,10 +267,16 @@
         <div class="container">
 
             <div class="row">
-                <div>
-                
-                </div>
+				<h2 class="section-heading text-left">Machine Learning Models</h2>
+            	<hr class="header-divider-top">
+            	<div>
+				<h3 class="section-subheading">Feature Net - WordCloud</h2>
+                <hr class="subheader-divider-top">
+                <section id="featurenet">
 
+                <div id="word-cloud"></div>
+                </section>
+                </div>
             </div>
 
        </div>
@@ -259,17 +285,6 @@
     </section>
 
 
-
-                    <ul class="custom-bullet blue-text">
-                        <li>Each point in the plot is colored differently to correspond to each districts, while the legends on the right correspond to the total amount of crimes in each district.</li>
-                        <li>Points are labeled(it also shows the amount of prostitution and vehicle theft cases in the district when you hover mouse over the points). </li>
-                        <li>The radius of a point is proportional to total number of crimes in that district</li>
-                        <li>The x-axis corresponds to total number of PROSTITUTION incidents</li>
-                        <li>The y-axis corresponds to total number of VEHICLE THEFT incidents</li>
-                        <li>Transition between 2003 to 2015 encounters an animation of dwindling the size of all points to fixed size and then expanding back in the end.</li>
-                        <li>Axis scales are fixed on x and y for both 2003 and 2015</li>
-                        <li>The axes are kept constant to make it easier to compare the values of the two years. With the constant axes it is easy to see that the general amount of the two focus crimes has declined</li>
-                    </ul>
 
 
     <footer class="footer-distributed">
@@ -290,6 +305,7 @@
 
 
   <script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
+  <script type="text/javascript" src="js/d3.layout.cloud.js"></script>
   <script type="text/javascript" src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   <!-- <script type="text/javascript" src="js/week7.js"></script> -->
   <!--  <script type="text/javascript" src="js/week8.js"></script> -->

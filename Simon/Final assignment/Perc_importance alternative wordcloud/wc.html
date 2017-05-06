@@ -62,7 +62,7 @@
 
     var color = d3.scale.linear()
             .domain([0, 30])
-            .range(["#EBC944", "red"]);
+            .range(["red","#EBC944"]);
 
     d3.layout.cloud().size([800, 300])
             .words(frequency_list)
@@ -73,7 +73,7 @@
 
     function draw(words) {
         d3.select("body").append("svg")
-                .attr("width", 850)
+                .attr("width", 1050)
                 .attr("height", 350)
                 .attr("class", "wordcloud")
                 .append("g")
@@ -84,7 +84,7 @@
                 .data(words)
                 .enter().append("text")
                 .style("font-size", function(d) { return d.size + "px"; })
-                .style("fill", function(d, i) { return color(i); })
+                .style("fill", function(d, i) { return color(30-i); })
                 .style("font-weight", "bold")
                 .attr("transform", function(d) {
                     return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";

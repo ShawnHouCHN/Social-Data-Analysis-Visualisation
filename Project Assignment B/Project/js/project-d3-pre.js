@@ -53,10 +53,11 @@ Plotly.d3.csv("data/injured.csv",function(injured){
 });
 
 
+
 var districts=['BRONX','BROOKLYN','STATEN ISLAND','MANHATTAN','QUEENS'];
 var year_twl = {}, year_thrt={}, year_fort={}, year_fift={}, year_sixt={},year_sevt={};
 var current_yearset={};
-
+var donut_chart;
 current_yearset=d3.csv("data/year-district.csv", function(years_districts) {
          for (var i=0; i<years_districts.length; i++) {
           row = years_districts[i];
@@ -107,12 +108,39 @@ current_yearset=d3.csv("data/year-district.csv", function(years_districts) {
           }
         }   
 
-        donut()
-              .$el(d3.select("#yearly-all"))
+      donut_chart=  donut()
+              .$el(d3.select("#donut-chart"))
               .data(year_twl)
               .render();
 
+      d3.select(".range-slider__range").on("input", function() {
+        //console.log(this.value);
+        switch (this.value) {
+          case '2012':
+           donut_chart.data(year_twl).render();
+           break;
+          case '2013': 
+           donut_chart.data(year_thrt).render();
+           break;
+          case '2014':
+           donut_chart.data(year_fort).render();
+           break;
+          case '2015':
+           donut_chart.data(year_fift).render();
+           break;
+          case '2016':
+           donut_chart.data(year_sixt).render();
+           break;
+          case '2017':
+           donut_chart.data(year_sevt).render();
+           break;
+        }
+        //chart.data(getData()).render();
+      });
+
+
   });
+
 
 
 function donut(){  
@@ -120,7 +148,7 @@ function donut(){
       var $el = d3.select("body")
       var data = {};
       // var showTitle = true;
-      var width = 960,
+      var width = 600,
           height = 400,
           radius = Math.min(width, height) / 2;
 
@@ -176,7 +204,7 @@ function donut(){
               .style("font-size", radius/5+"px");
 
           g.on("mouseover", function(obj){
-            console.log(obj)
+           // console.log(obj)
             svg.select("text.text-tooltip")
             .attr("fill", function(d) { return color(obj.data.key); })
             .text(function(d){
@@ -192,7 +220,7 @@ function donut(){
           g.data(pie(d3.entries(data))).exit().remove();
 
           g.select("path")
-          .transition().duration(200)
+          .transition().duration(1000)
           .attrTween("d", function(a){
             var i = d3.interpolate(this._current, a);
             this._current = i(0);
@@ -240,6 +268,68 @@ function donut(){
 };
 
 
+ var frequency_list = [
+        {"text":"TIME","size":25.09},
+        {"text":"Average_Humidity","size":9.20},
+        {"text":"Mean_Temperature","size":8.25},
+        {"text":"Max_Gust_Speed","size":7.42},
+        {"text":"Wind_Speed","size":6.32},
+        {"text":"Max_Wind_Speed","size":5.63},
+        {"text":"Month","size":5.26},
+        {"text":"VTC2_two_wheeler","size":4.74},
+        {"text":"Visibility","size":3.10},
+        {"text":"VTC2_other","size":3.08},
+        {"text":"Precipitation","size":2.91},
+        {"text":"street_SL","size":2.74},
+        {"text":"VTC2_small","size":2.08},
+        {"text":"VTC2_medium","size":1.93},
+        {"text":"MANHATTAN","size":1.69},
+        {"text":"BROOKLYN","size":1.31},
+        {"text":"QUEENS","size":1.29},
+        {"text":"BRONX","size":1.07},
+        {"text":"VTC1_small","size":1.06},
+        {"text":"VTC1_medium","size":1.03},
+        {"text":"Snow_Depth","size":0.90},
+        {"text":"VTC1_two_wheeler","size":0.62},
+        {"text":"Rain_EV","size":0.62},
+        {"text":"VTC2_large","size":0.58},
+        {"text":"STATEN_ISLAND","size":0.56},
+        {"text":"VTC1_other","size":0.44},
+        {"text":"Fog_EV","size":0.35},
+        {"text":"VTC1_large","size":0.34},
+        {"text":"Snow","size":0.29},
+        {"text":"Snow_EV","size":0.12}
+    ];
 
+var color = d3.scaleLinear()
+            .domain([0, 30])
+            .range(["#EBC944", "#DC143C"]);
 
+d3.layout.cloud().size([800, 300])
+            .words(frequency_list)
+            .rotate(0)
+            .fontSize(function(d) { return 10+(d.size*5); })
+            .on("end", draw)
+            .start();
 
+function draw(words) {
+        d3.select("#word-cloud").append("svg")
+                .attr("width", 1050)
+                .attr("height", 350)
+                .attr("class", "wordcloud")
+                .append("g")
+                // without the transform, words words would get cutoff to the left and top, they would
+                // appear outside of the SVG area
+                .attr("transform", "translate(320,200)")
+                .selectAll("text")
+                .data(words)
+                .enter().append("text")
+                .style("font-size", function(d) { return d.size + "px"; })
+                .style("fill", function(d, i) { return color(i); })
+                .style("fill-opacity", function(d,i) {return (1/30)*(30-i);})
+                .style("font-weight", "bold")
+                .attr("transform", function(d) {
+                    return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
+                })
+                .text(function(d) { return d.text; });
+};

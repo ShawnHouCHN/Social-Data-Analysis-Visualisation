@@ -24,7 +24,6 @@ $(document).ready(function(){
         }, 1500, 'easeInOutExpo');
     });
 
-
 });
 
 
@@ -55,16 +54,25 @@ $(".dropdown").hover(
         });
 });
 
+var rangeSlider = function(){
+  var slider = $('.range-slider'),
+      range = $('.range-slider__range'),
+      value = $('.range-slider__value');
+    
+  slider.each(function(){
 
-$( function() {
-$( "#slider-range" ).slider({
-      range: "max",
-      min: 2012,
-      max: 2017,
-      value: 2012,
-      slide: function( event, ui ) {
-        $( "#amount" ).val( ui.value );
-      }
+    value.each(function(){
+      var value = $(this).prev().attr('value');
+      $(this).html(value);
     });
-    $( "#amount" ).val( $( "#slider-range" ).slider( "value" ) );
-  } );
+
+    range.on('input', function(){
+      $(this).next(value).html(this.value);
+    });
+  });
+};
+
+
+rangeSlider();
+
+
