@@ -84,6 +84,20 @@ h6 {
     background-color:#EBC944;    
 }
 
+.hideme
+{
+    opacity:0;
+}
+
+
+.icon{
+    color:white;
+}
+
+.icon-group{
+    text-align: center;
+}
+
 .intro-message > h3 {
     text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
 }
@@ -229,4 +243,154 @@ footer {
 p.copyright {
     margin: 15px 0 0;
 }
+
+
+.row-height {
+  display: table;
+  table-layout: fixed;
+  height: 100%;
+  width: 100%;
+}
+.col-height {
+  display: table-cell;
+  float: none;
+  height: 100%;
+}
+.col-top {
+  vertical-align: top;
+}
+.col-middle {
+  vertical-align: middle;
+}
+.col-bottom {
+  vertical-align: bottom;
+}
+
+@media (min-width: 480px) {
+  .row-xs-height {
+    display: table;
+    table-layout: fixed;
+    height: 100%;
+    width: 100%;
+  }
+  .col-xs-height {
+    display: table-cell;
+    float: none;
+    height: 100%;
+  }
+  .col-xs-top {
+    vertical-align: top;
+  }
+  .col-xs-middle {
+    vertical-align: middle;
+  }
+  .col-xs-bottom {
+    vertical-align: bottom;
+  }
+}
+
+@media (min-width: 768px) {
+  .row-sm-height {
+    display: table;
+    table-layout: fixed;
+    height: 100%;
+    width: 100%;
+  }
+  .col-sm-height {
+    display: table-cell;
+    float: none;
+    height: 100%;
+  }
+  .col-sm-top {
+    vertical-align: top;
+  }
+  .col-sm-middle {
+    vertical-align: middle;
+  }
+  .col-sm-bottom {
+    vertical-align: bottom;
+  }
+}
+
+@media (min-width: 992px) {
+  .row-md-height {
+    display: table;
+    table-layout: fixed;
+    height: 100%;
+    width: 100%;
+  }
+  .col-md-height {
+    display: table-cell;
+    float: none;
+    height: 100%;
+  }
+  .col-md-top {
+    vertical-align: top;
+  }
+  .col-md-middle {
+    vertical-align: middle;
+  }
+  .col-md-bottom {
+    vertical-align: bottom;
+  }
+}
+
+@media (min-width: 1200px) {
+  .row-lg-height {
+    display: table;
+    table-layout: fixed;
+    height: 100%;
+    width: 100%;
+  }
+  .col-lg-height {
+    display: table-cell;
+    float: none;
+    height: 100%;
+  }
+  .col-lg-top {
+    vertical-align: top;
+  }
+  .col-lg-middle {
+    vertical-align: middle;
+  }
+  .col-lg-bottom {
+    vertical-align: bottom;
+  }
+}
+
+
+
+@mixin long-shadow (#12664b, 150) {
+  $list: ();
+  @for $i from 1 through 150px {
+    $list: append($list, #12664b $i+px $i+px, comma);
+  }
+  text-shadow: $list;
+}
+
+#icon-box span {
+  display: block;
+  position: absolute;
+  text-align: center;
+  height: 100px;
+  width: 100px;
+  color: #fff;
+}
+
+#icon-box {
+  display: inline-block;
+  margin: .5em;
+  position: relative;
+  
+  overflow: hidden;
+  width: 128px;
+  height: 112px;
+  line-height: 128px;
+  background-color: #EBC944;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  border-radius: 15px;
+}
+
 

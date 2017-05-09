@@ -305,7 +305,7 @@ var color = d3.scaleLinear()
             .domain([0, 30])
             .range(["#EBC944", "#DC143C"]);
 
-d3.layout.cloud().size([800, 300])
+d3.layout.cloud().size([600, 300])
             .words(frequency_list)
             .rotate(0)
             .fontSize(function(d) { return 10+(d.size*5); })
@@ -314,7 +314,7 @@ d3.layout.cloud().size([800, 300])
 
 function draw(words) {
         d3.select("#word-cloud").append("svg")
-                .attr("width", 1050)
+                .attr("width", 850)
                 .attr("height", 350)
                 .attr("class", "wordcloud")
                 .append("g")

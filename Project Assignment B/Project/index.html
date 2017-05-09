@@ -110,7 +110,7 @@
                 <div class="col-md-4 hideme">
                  	<div class="clearfix"></div>
                     <h5 class="blue-text">Foreword:</h5> 
-                    <P class="blue-text">The corresponding jupyter notebook can be previewed or downloaded by clicking the dropdown list to the right of the navigation bar. Some of the plots in the notebook depend heavily on JS rendering so it is better to be viewed in <span class="orange-text">nbviewer</span>. </P>  
+                    <P class="blue-text">The corresponding jupyter notebook can be previewed or downloaded by clicking the dropdown list to the right of the navigation bar. The notebook is relatively <span class="orange-text">long and abundant</span> so it will take some time to load. Some of the plots in the notebook depend heavily on JS rendering so it is better to be viewed in <span class="orange-text">nbviewer</span>. </P>  
                 </div>
         </div>
     </div>
@@ -121,18 +121,49 @@
      <div class="content-section-intro">
         <div class="container">
             <div class="row">
+                 <h2 class="section-heading">Intro</h2>
+                <hr class="header-divider-top">
                 <div class="col-sm-8 pull-right hideme">
-                    <h2 class="section-heading">Motivation</h2>
-                    <hr class="header-divider-top">
-                    <P class="blue-text">The project focus on analysing the motor vehicle accidents in NYC registered since July 1st 2012. The original dataset can be extracted from Open City website at <a class="dataset-link" href="https://data.cityofnewyork.us/Public-Safety/NYPD-Motor-Vehicle-Collisions/h9gi-nx95" >NYPD Motor Vehicle Collisions | NYC Open Data</a>. Besides, two addictional datasets are used and merged with the fundemental dataset into an integration. One is the speed limit data given by  <a class="dataset-link" href="http://www.nyc.gov/html/dot/html/about/vz_datafeeds.shtml">NYC DOT</a>, the other is the weather data extracted from  <a class="dataset-link"  href="https://www.wunderground.com/">Weather Underground</a>. As weather undergound API requires a valid license, the data embedded into the project is extracted by scrapping the website by <a class="dataset-link" href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/">Beautifulsoup 4</a> and manually parsed it afterwards. The integrated dataset (CSV) can be downloaded at <a class="dataset-link" href="#">here</a>.
-                    <P class="blue-text"> This website introduces two main sections of the analysis. Firstly, preliminary analysis is performed against the dataset including analysing of the spatio and temporal distribution of accidents. Secondly, Several Machine learning models are implmented on the dataset including clustering, correlations and etc. 
+                    <h3 class="section-subheading">Motivation</h2>
+                    <hr class="subheader-divider-top">
+                    <P class="blue-text">We choose to work with NYPD Collision Data, since it is basicly a matter of <span class="orange-text">life and death</span>. If we could make a breakthrough and determine the main causalities of traffic accidents in New York, preventive measures could be taken and traffic related injuries and fatalities can be reduced. This could prevent reduction in lifequality and safe the city of New York a lot of money.
                 </div>
             </div>
 
         </div>
         <!-- /.container -->
+        <br><br>
+        <div class="container">
+            <div class="row">
+              <div class="row-height">
+                <div class="col-md-6 col-sm-6 col-height col-top hideme">
+                    <h3 class="section-subheading">About the Datasets</h2>
+                    <hr class="subheader-divider-top">
+                    <P class="blue-text">The project focus on analysing the motor vehicle accidents in NYC registered since July 1st 2012. The original dataset can be extracted from Open City website at <a class="dataset-link" href="https://data.cityofnewyork.us/Public-Safety/NYPD-Motor-Vehicle-Collisions/h9gi-nx95" >NYPD Motor Vehicle Collisions | NYC Open Data</a>. Besides, two addictional datasets are used and merged with the fundemental dataset into an integration. One is the speed limit data given by  <a class="dataset-link" href="http://www.nyc.gov/html/dot/html/about/vz_datafeeds.shtml">NYC DOT</a>, the other is the weather data extracted from  <a class="dataset-link"  href="https://www.wunderground.com/">Weather Underground</a>. As weather undergound API requires a valid license, the data embedded into the project is extracted by scrapping the website by <a class="dataset-link" href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/">Beautifulsoup 4</a> and manually parsed it afterwards. The integrated dataset (CSV) can be downloaded at <a class="dataset-link" href="https://drive.google.com/file/d/0BymjCBWE7wFzWHhyV2Y5NjQwX1U/view?usp=sharing">here</a>.
+                    <P class="blue-text"> This website introduces two main sections of the analysis. Firstly, preliminary analysis is performed against the dataset including analysing of the spatio and temporal distribution of accidents. Secondly, Several Machine learning models are implmented on the dataset including clustering, correlations and etc. 
+                </div>
 
+                <div class="col-md-6 col-sm-6 hideme col-height col-middle">
+            
+                 <div class="row clearfix icon-group">
+                    <div class="col-xs-4" id="icon-box">
+                       <span><i class="fa fa-car fa-4x icon " aria-hidden="true"></i></span>
+                    </div>
+                    <div class="col-xs-4" id="icon-box">
+                        <span><i class="fa fa-umbrella fa-4x icon" aria-hidden="true"></i></span>
+                    </div>
+                    <div class="col-xs-4" id="icon-box">
+                        <span><i class="fa fa-tachometer fa-4x icon" aria-hidden="true"></i></span>
+                    </div>
+                 </div>
+                
+                </div>
 
+              </div>
+
+            </div>
+
+        </div>
 
     </div>
     </section>
@@ -142,16 +173,16 @@
     	
     	 <div class="container">
             <div class="row">
-            	<h2 class="section-heading text-right">Priliminary Analysis</h2>
-            	<hr class="header-divider-top">
+            	<h2 class="section-heading text-right hideme">Preliminary Analysis</h2>
+            	<hr class="header-divider-top hideme">
                 <div>
                 <section id="temporal">
                     <div class="clearfix"></div>
-                    <h3 class="section-subheading">Temporal Distribution</h2>
-                    <hr class="subheader-divider-top">
-                    <P class="blue-text">There are several bar charts included in this section to reveal some statstic natures of the integrated dataset we work on. Some interesting perspectives are visualised and analysed afterwards. <span class="orange-text">D3.js and Plotly.js </span> are both used for the plots in this section below.</P>
+                    <h3 class="section-subheading hideme">Temporal Distribution</h2>
+                    <hr class="subheader-divider-top hideme">
+                    <P class="blue-text hideme">There are several bar charts included in this section to reveal some statstic natures of the integrated dataset we work on. Some interesting perspectives are visualised and analysed afterwards. <span class="orange-text">D3.js and Plotly.js </span> are both used for the plots in this section below.</P>
 
-                    <div id="monthly-all" style="width:100%; height: 600px">
+                    <div class="hideme" id="monthly-all" style="width:100%; height: 600px">
 	                    <div class="clearfix"></div>
 						<h4 class="orange-text"><i class="fa fa-hand-o-right" aria-hidden="true"></i> 1. Monthly Statistic of Accidents</h4>
 						<div id="month-plotly" style="width:100%; height: 400px"></div>
@@ -163,7 +194,7 @@
 
 					</div>
 
-					<div id="yearly-all" style="width:100%; height: 600px">
+					<div class="hideme" id="yearly-all" style="width:100%; height: 600px">
 						<div class="clearfix"></div>
 						<h4 class="orange-text"><i class="fa fa-hand-o-right" aria-hidden="true"></i> 2. Yearly Statistic of Accidents in Each District</h4>
 						<P class="blue-text">The donut chart below shows the yearly statistic of accident cases in each district. The chart is interactive and the summation of accident of different districts are displayed in the core of the "donut" while mouse is hovering over. Slide "Thumb" below to check difference between years.
@@ -193,11 +224,11 @@
 
     			<section id="spatial">
                     <div class="clearfix"></div>
-                    <h3 class="section-subheading">Spatial Distribution</h2>
-                    <hr class="subheader-divider-top">
-                    <P class="blue-text">The locations of accident scenes are analyzed in this section. The maps reveal the geographical distributions of accidents. We used <a class="dataset-link" href="https://folium.readthedocs.io/en/latest/" >Folium.js</a> to plot the maps and make data visualisation interactive.  </P>
+                    <h3 class="section-subheading hideme">Spatial Distribution</h2>
+                    <hr class="subheader-divider-top hideme">
+                    <P class="blue-text hideme">The locations of accident scenes are analyzed in this section. The maps reveal the geographical distributions of accidents. We used <a class="dataset-link" href="https://folium.readthedocs.io/en/latest/" >Folium.js</a> to plot the maps and make data visualisation interactive.  </P>
 					
-                    <div id="folium-top-10-all" style="width:100%; height: 550px">
+                    <div class="hideme" id="folium-top-10-all" style="width:100%; height: 550px">
 						<div id="folium-top-10-content">
 						 	<div class="clearfix"></div>
 							<h4 class="orange-text"><i class="fa fa-hand-o-right" aria-hidden="true"></i> 1. Top 10 Dangerous corners in NYC</h4>
@@ -215,7 +246,7 @@
 					</div>
 
 
-                    <div id="folium-heatmap-all" style="width:100%; height: 550px">
+                    <div class="hideme" id="folium-heatmap-all" style="width:100%; height: 550px">
                     	<h4 class="orange-text"><i class="fa fa-hand-o-right" aria-hidden="true"></i> 2. Heatmap of each year</h4>
                     	<div class="clearfix"></div>
 	                    <ul class="nav nav-tabs year-nav">
@@ -226,7 +257,14 @@
 	                        <li><a class="tabften blue-text" data-toggle="tab" href="#tabsixt">2016</a></li>
 	                        <li><a class="tabften blue-text" data-toggle="tab" href="#tabsevt">2017</a></li>
 	                    </ul>
-
+                        <div lcass="heat-content">
+                            <P class="blue-text">
+                            On the plot below can see a heat map of all collisions found in the dataset. Hotter areas (meaning stronger red color) is correlated with the number of accidents in a given area. The map offers the ability to switch between years (using the slider) and also zooming in/out to better visualise certain areas.
+                            </P> 
+                            <P class="blue-text">
+                            It should be noted that when zooming in, one can see that many of the accidents are marked as happening on intersections. This makes intuitive sense, as intersections are often where accidents case. However it is also possible that in some cases the police officers that noted down the accident marked it as happening on an intersection for convenience.  
+                            </P>                          
+                        </div>
 	                    <div class="tab-content">
 	                      <div id="tabtwl" class="tab-pane fade in active">
 	                        <h5 class="orange-text">Heatmap 2012 </h5>
@@ -278,22 +316,22 @@
         <div class="container">
 
             <div class="row">
-				<h2 class="section-heading text-left">Machine Learning Models</h2>
-            	<hr class="header-divider-top">
-            	<P class="blue-text">For the supervised machine learning part, various models were trained to predict whether an individual gets injured/killed given that there is an accident. Performance was measured with nested cross validation and the feature importance calculated.</P>
-            	<div style="width:100%; height: 400px">
+				<h2 class="section-heading text-left hideme">Machine Learning Models</h2>
+            	<hr class="header-divider-top hideme">
+            	<P class="blue-text hideme">For the supervised machine learning part, various models were trained to predict whether an individual gets injured/killed given that there is an accident. Performance was measured with nested cross validation and the feature importance calculated.</P>
+            	<div class="hideme" style="width:100%; height: 400px">
             	<section id="featurenet">
-				<h3 class="section-subheading">Feature Net - WordCloud</h2>
-                <hr class="subheader-divider-top">           
-                <div id="word-cloud-content"></div>
-                <div id="word-cloud"></div>
+				<h3 class="section-subheading hideme">Feature Net - WordCloud</h2>
+                <hr class="subheader-divider-top hideme">           
+                <div class="col-sm-3 hideme" id="word-cloud-content"><P class="blue-text">For the supervised machine learning part, various models were trained to predict whether an individual gets injured/killed given that there is an accident. Performance was measured with nested cross validation and the feature importance calculated.</P></div>
+                <div class="col-sm-9 hideme" id="word-cloud"></div>
                 </section>
                 </div>
-                <div style="width:100%">
+                <div class="hideme" style="width:100%">
                 <section id="performance">
-                <h3 class="section-subheading">Performance Evaluation of Different Models</h2>
-                <hr class="subheader-divider-top">    
-                <div id="perform-plot"></div>
+                <h3 class="section-subheading hideme">Performance Evaluation of Different Models</h2>
+                <hr class="subheader-divider-top hideme">    
+                <div class="hideme" id="perform-plot"></div>
                 </section>
                	</div>
             </div>
